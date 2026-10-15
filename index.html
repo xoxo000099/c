@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品格教育小教室 Character Corner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@700;800&family=Huninn&display=swap" rel="stylesheet">
+<style>
+:root{
+  --yellow:#FFD95A;--blue:#A9CBF5;--teal:#1C4A4E;--teal-2:#25595E;--cream:#FFF8EC;
+  --pink:#F7A9A8;--mint:#8ED1C6;--white:#fff;--orange:#EE7D2B;
+  --shadow:0 6px 0 rgba(28,74,78,.22);
+  --zh:'Huninn','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',var(--zh);color:var(--teal);background:var(--cream);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:none;background:none;cursor:pointer}
+.zh{font-family:var(--zh)}
+.disp{font-family:'Baloo 2',var(--zh)}
+
+/* ---------- hero ---------- */
+header{background:var(--yellow);border-bottom:4px solid var(--teal);position:relative;overflow:hidden}
+.hero{max-width:1180px;margin:0 auto;padding:48px 24px 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;position:relative;z-index:1}
+.badge{display:inline-block;background:var(--white);border:3px solid var(--teal);border-radius:999px;padding:4px 18px;font-weight:800;font-size:18px;margin-bottom:16px}
+h1{font-family:'Baloo 2',var(--zh);font-weight:800;line-height:1.05}
+h1 .zh{display:block;font-size:clamp(40px,6vw,74px);color:var(--teal)}
+h1 .en{display:block;font-size:clamp(34px,5vw,62px);color:var(--white);-webkit-text-stroke:3px var(--teal);paint-order:stroke fill;text-shadow:0 5px 0 var(--teal)}
+.lead{font-family:var(--zh);font-size:20px;margin-top:16px;line-height:1.6;max-width:520px}
+.traits{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.trait{background:var(--white);border:3px solid var(--teal);border-radius:16px;padding:6px 14px;font-weight:800;box-shadow:var(--shadow);transition:.15s;font-size:17px}
+.trait:hover{transform:translateY(-4px) rotate(-3deg)}
+.trait:nth-child(2){background:var(--blue)}
+.trait:nth-child(3){background:var(--pink)}
+.trait:nth-child(4){background:var(--mint)}
+.kids{display:flex;justify-content:center;align-items:flex-end;position:relative}
+.kids svg{width:34%;max-width:150px;margin:0 -12px;animation:bob 3.4s ease-in-out infinite}
+.kids svg:nth-child(2){width:40%;max-width:180px;animation-delay:.4s;z-index:1}
+.kids svg:nth-child(3){animation-delay:.8s}
+@keyframes bob{50%{transform:translateY(-12px)}}
+.circle{position:absolute;border:3px solid var(--teal);border-radius:50%}
+
+/* ---------- filter ---------- */
+main{max-width:1180px;margin:0 auto;padding:36px 24px 60px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.bar h2{font-family:'Baloo 2',var(--zh);font-size:36px;font-weight:800}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.f{border:3px solid var(--teal);border-radius:999px;padding:6px 18px;background:var(--white);font-weight:800;font-family:var(--zh);font-size:17px;transition:.15s}
+.f:hover{transform:translateY(-2px)}
+.f.on{background:var(--teal);color:var(--white)}
+
+/* ---------- lesson cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px}
+.lesson{background:var(--white);border:3px solid var(--teal);border-radius:28px;overflow:hidden;box-shadow:0 8px 0 rgba(28,74,78,.22);display:flex;flex-direction:column;transition:.18s}
+a.lesson:hover{transform:translateY(-6px) rotate(-.6deg)}
+.thumb{height:200px;position:relative;display:flex;align-items:flex-end;justify-content:center;border-bottom:3px solid var(--teal);overflow:hidden}
+.thumb svg{height:180px;margin:0 -10px}
+.thumb .emo{position:absolute;top:14px;right:16px;width:62px;height:62px;border-radius:50%;background:var(--white);border:3px solid var(--teal);display:flex;align-items:center;justify-content:center;font-size:32px}
+.thumb .no{position:absolute;top:14px;left:16px;font-family:'Baloo 2';font-weight:800;font-size:18px;background:var(--white);border:3px solid var(--teal);border-radius:12px;padding:0 10px}
+.body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body h3{font-family:'Baloo 2',var(--zh);font-size:28px;line-height:1.1;font-weight:800}
+.body h3 small{display:block;font-family:var(--zh);font-size:19px;font-weight:400;opacity:.85;margin-top:4px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--zh);font-size:14px;border:2px solid var(--teal);border-radius:999px;padding:1px 10px;background:var(--cream)}
+.desc{font-family:var(--zh);font-size:16px;line-height:1.6;opacity:.9}
+.go{margin-top:auto;align-self:flex-start;background:var(--teal);color:var(--white);border-radius:14px;padding:6px 18px;font-weight:800;font-family:'Baloo 2';font-size:20px}
+.lesson.soon{opacity:.6;box-shadow:none;border-style:dashed}
+.lesson.soon .go{background:var(--cream);color:var(--teal);border:2px dashed var(--teal)}
+.lesson.hide{display:none}
+
+footer{background:var(--teal);color:var(--white);text-align:center;padding:22px 16px;font-family:var(--zh);font-size:16px}
+footer b{font-family:'Baloo 2';font-size:22px;display:block}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:32px 16px 28px}
+  .lead{margin:16px auto 0}
+  .traits{justify-content:center}
+  main{padding:28px 16px 48px}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="circle" style="width:150px;height:150px;left:-50px;bottom:-50px;background:var(--blue)"></div>
+  <div class="circle" style="width:70px;height:70px;right:5%;top:22px;background:var(--pink)"></div>
+  <div class="hero">
+    <div>
+      <span class="badge zh">🌱 品格教育 × 英語</span>
+      <h1><span class="zh">品格教育小教室</span><span class="en">Character Corner</span></h1>
+      <p class="lead">每一課都可以直接上課使用：有互動卡片、念讀發音和小遊戲。點下面的課程開始吧！</p>
+      <div class="traits">
+        <span class="trait">💛 Kindness 善良</span>
+        <span class="trait">🤝 Respect 尊重</span>
+        <span class="trait">🌟 Honesty 誠實</span>
+        <span class="trait">🎒 Responsibility 負責</span>
+      </div>
+    </div>
+    <div class="kids" id="heroKids"></div>
+  </div>
+</header>
+
+<main>
+  <div class="bar">
+    <h2>📚 課程 Lessons</h2>
+    <div class="filters" id="filters"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  <b>Be kind. Be respectful. Be you! 🌈</b>
+  品格教育英語互動教材
+</footer>
+
+<script>
+/* ===== 新增課程：在這裡加一筆就好 =====
+   ready:false 會顯示成「即將推出」 */
+const LESSONS=[
+  {href:'kindness.html', en:'Be Kind, Be a Good Friend', zh:'當個善良的好朋友', grades:[2,3], emo:'💛', bg:'#FFE1E0',
+   kids:[['joy',{pose:'wave'}],['tom',{pose:'hold',flip:1}]], tags:['簡報 17 頁','Kindness Quest 遊戲'],
+   desc:'什麼是善良、四種好品格、每個人都不一樣、好朋友三步驟、魔法句子，最後寫下自己的善良承諾。', ready:true},
+  {href:'respect.html', en:'Respect', zh:'尊重', grades:[1,2,3], emo:'🤝', bg:'#DCEBFF',
+   kids:[['amy',{pose:'wave'}],['leo',{pose:'cheer',flip:1}]], tags:['單字卡 10 張','3 個互動遊戲','中文提示開關'],
+   desc:'尊重別人、尊重物品、尊重自己。翻翻單字卡，再玩情境判斷、選說法、句子重組。', ready:true},
+  {href:'#', en:'Honesty', zh:'誠實', grades:[1,2,3], emo:'🌟', bg:'#FFF2C2',
+   kids:[['mia',{pose:'hip'}]], tags:['製作中'], desc:'說實話、承認錯誤。', ready:false},
+  {href:'#', en:'Responsibility', zh:'負責', grades:[1,2,3], emo:'🎒', bg:'#D6F5E3',
+   kids:[['ben',{pose:'hold'}]], tags:['製作中'], desc:'做好自己的事、照顧班上的東西。', ready:false}
+];
+
+/* ---------- character maker (same as lesson pages) ---------- */
+const SKIN=['#F6D2B4','#E8B48E','#C98F65','#9C6644','#F2C29B'];
+const INK='#1C4A4E';
+function person(o={}){
+  const skin=o.skin||SKIN[0], hair=o.hair||'#3B2A20', style=o.style||'short',
+        shirt=o.shirt||'#6FA3E8', pants=o.pants||'#1C4A4E', shoe=o.shoe||'#ffffff',
+        pose=o.pose||'down', face=o.face||'happy', flip=o.flip?'transform="translate(200,0) scale(-1,1)"':'';
+  const sw='stroke="'+INK+'" stroke-width="3"';
+  // arms
+  const arm=(d,hx,hy)=>`<path d="${d}" fill="none" stroke="${INK}" stroke-width="24" stroke-linecap="round"/><path d="${d}" fill="none" stroke="${shirt}" stroke-width="18" stroke-linecap="round"/><circle cx="${hx}" cy="${hy}" r="11" fill="${skin}" ${sw}/>`;
+  let arms='';
+  const L={down:['M74 140 Q52 172 58 205',58,207],up:['M74 140 Q44 118 38 80',38,78],hold:['M74 140 Q70 186 96 188',96,188],hip:['M74 140 Q46 160 66 182',66,184]};
+  const R={down:['M126 140 Q148 172 142 205',142,207],up:['M126 140 Q156 118 162 80',162,78],wave:['M126 140 Q160 126 164 84',164,80],hold:['M126 140 Q130 186 104 188',104,188],point:['M126 140 Q156 150 182 136',184,135],hip:['M126 140 Q154 160 134 182',134,184]};
+  const pl={down:['down','down'],wave:['down','wave'],cheer:['up','up'],hold:['hold','hold'],point:['down','point'],hip:['hip','hip']}[pose]||['down','down'];
+  const a1=L[pl[0]], a2=R[pl[1]];
+  arms=arm(...a1)+arm(...a2);
+  // hair behind head
+  let back='', front='';
+  if(style==='long'){back=`<path d="M50 80 Q46 26 100 26 Q154 26 150 80 L156 160 Q100 176 44 160Z" fill="${hair}" ${sw}/>`;}
+  if(style==='pony'){back=`<path d="M142 46 Q182 50 170 104 Q160 128 150 112 Q166 80 140 66Z" fill="${hair}" ${sw}/>`;}
+  if(style==='bun'){back=`<circle cx="100" cy="30" r="19" fill="${hair}" ${sw}/>`;}
+  if(style==='twin'){back=`<circle cx="50" cy="58" r="17" fill="${hair}" ${sw}/><circle cx="150" cy="58" r="17" fill="${hair}" ${sw}/>`;}
+  const fronts={
+    short:`<path d="M54 82 Q48 28 100 28 Q152 28 146 80 Q138 56 112 54 Q118 64 104 66 Q76 50 54 82Z" fill="${hair}" ${sw}/>`,
+    long:`<path d="M54 86 Q50 30 100 30 Q150 30 146 86 Q132 58 100 58 Q70 58 54 86Z" fill="${hair}" ${sw}/>`,
+    bob:`<path d="M48 108 Q40 28 100 28 Q160 28 152 108 L138 108 Q142 62 100 60 Q58 62 62 108Z" fill="${hair}" ${sw}/>`,
+    pony:`<path d="M54 84 Q50 30 100 30 Q150 30 146 82 Q122 60 86 62 Q66 64 54 84Z" fill="${hair}" ${sw}/>`,
+    bun:`<path d="M54 82 Q52 42 100 40 Q148 42 146 82 Q126 58 100 58 Q74 58 54 82Z" fill="${hair}" ${sw}/>`,
+    twin:`<path d="M54 84 Q50 32 100 32 Q150 32 146 84 Q128 60 100 62 Q72 60 54 84Z" fill="${hair}" ${sw}/>`,
+    curly:`<g fill="${hair}" ${sw}><circle cx="62" cy="62" r="18"/><circle cx="82" cy="40" r="20"/><circle cx="110" cy="36" r="21"/><circle cx="136" cy="50" r="19"/><circle cx="146" cy="74" r="14"/><circle cx="54" cy="84" r="12"/></g>`,
+    cap:`<path d="M52 72 Q52 28 100 28 Q148 28 148 72Z" fill="${hair}" ${sw}/><path d="M120 66 Q162 62 176 74 Q150 80 120 76Z" fill="${hair}" ${sw}/>`
+  };
+  front=fronts[style]||fronts.short;
+  // face
+  const eyeDot=`<ellipse cx="84" cy="84" rx="4.5" ry="5.5" fill="${INK}"/><ellipse cx="116" cy="84" rx="4.5" ry="5.5" fill="${INK}"/>`;
+  const cheeks=`<circle cx="72" cy="98" r="7" fill="#F7A9A8" opacity=".8"/><circle cx="128" cy="98" r="7" fill="#F7A9A8" opacity=".8"/>`;
+  const st=`fill="none" stroke="${INK}" stroke-width="3.5" stroke-linecap="round"`;
+  const faces={
+    happy:`<path d="M77 86 Q84 77 91 86" ${st}/><path d="M109 86 Q116 77 123 86" ${st}/><path d="M88 102 Q100 114 112 102" ${st}/>${cheeks}`,
+    open:`${eyeDot}<path d="M88 100 Q100 100 112 100 Q110 116 100 116 Q90 116 88 100Z" fill="#8A3B3B" stroke="${INK}" stroke-width="3"/>${cheeks}`,
+    sad:`${eyeDot}<path d="M76 74 L90 78" ${st}/><path d="M124 74 L110 78" ${st}/><path d="M90 110 Q100 101 110 110" ${st}/><path d="M80 94 Q78 102 81 106" fill="none" stroke="#6FA3E8" stroke-width="4" stroke-linecap="round"/>`,
+    oops:`${eyeDot}<ellipse cx="100" cy="106" rx="6" ry="7" fill="#8A3B3B" stroke="${INK}" stroke-width="3"/>${cheeks}`,
+    mad:`${eyeDot}<path d="M76 74 L92 80" ${st}/><path d="M124 74 L108 80" ${st}/><path d="M88 106 Q100 100 112 106" ${st}/>`,
+    calm:`${eyeDot}<path d="M90 104 Q100 110 110 104" ${st}/>${cheeks}`
+  };
+  return `<svg viewBox="0 0 200 290" xmlns="http://www.w3.org/2000/svg"><g ${flip}>
+    ${back}
+    <path d="M86 208 L82 262" stroke="${INK}" stroke-width="26" stroke-linecap="round"/><path d="M86 208 L82 262" stroke="${pants}" stroke-width="20" stroke-linecap="round"/>
+    <path d="M114 208 L118 262" stroke="${INK}" stroke-width="26" stroke-linecap="round"/><path d="M114 208 L118 262" stroke="${pants}" stroke-width="20" stroke-linecap="round"/>
+    <ellipse cx="76" cy="272" rx="20" ry="11" fill="${shoe}" ${sw}/><ellipse cx="124" cy="272" rx="20" ry="11" fill="${shoe}" ${sw}/>
+    <rect x="66" y="122" width="68" height="94" rx="28" fill="${shirt}" ${sw}/>
+    <path d="M86 124 Q100 136 114 124" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${arms}
+    <circle cx="54" cy="86" r="9" fill="${skin}" ${sw}/><circle cx="146" cy="86" r="9" fill="${skin}" ${sw}/>
+    <circle cx="100" cy="80" r="47" fill="${skin}" ${sw}/>
+    ${front}
+    ${faces[face]||faces.happy}
+  </g></svg>`;
+}
+
+/* ---------- people presets ---------- */
+const P={
+  amy:{skin:SKIN[0],hair:'#5A3825',style:'long',shirt:'#FFFFFF',pants:'#6FA3E8',shoe:'#fff'},
+  tom:{skin:SKIN[1],hair:'#2B1D14',style:'short',shirt:'#FFD95A',pants:'#1C4A4E'},
+  mia:{skin:SKIN[2],hair:'#1E1410',style:'curly',shirt:'#F7A9A8',pants:'#6FA3E8'},
+  leo:{skin:SKIN[4],hair:'#E0A040',style:'cap',shirt:'#5CC28A',pants:'#1C4A4E'},
+  kim:{skin:SKIN[0],hair:'#2B1D14',style:'bob',shirt:'#A9CBF5',pants:'#F26B5B'},
+  ben:{skin:SKIN[3],hair:'#1E1410',style:'short',shirt:'#F26B5B',pants:'#2E4057'},
+  ann:{skin:SKIN[1],hair:'#7A4A2A',style:'pony',shirt:'#FFD95A',pants:'#6FA3E8'},
+  joy:{skin:SKIN[2],hair:'#1E1410',style:'twin',shirt:'#A9CBF5',pants:'#F7A9A8'},
+  sam:{skin:SKIN[4],hair:'#3B2A20',style:'curly',shirt:'#FFFFFF',pants:'#5CC28A'},
+  zoe:{skin:SKIN[0],hair:'#C0582E',style:'bun',shirt:'#5CC28A',pants:'#1C4A4E'},
+  teacher:{skin:SKIN[1],hair:'#3B2A20',style:'bun',shirt:'#1C4A4E',pants:'#6FA3E8'}
+};
+const mk=(k,extra={})=>person(Object.assign({},P[k],extra));
+
+
+document.getElementById('heroKids').innerHTML=
+  mk('kim',{pose:'wave'})+mk('amy',{pose:'cheer',face:'open'})+mk('ben',{pose:'wave',flip:1});
+
+/* ---------- filters ---------- */
+const FILTERS=[['all','全部'],[1,'一年級'],[2,'二年級'],[3,'三年級']];
+let cur='all';
+const fEl=document.getElementById('filters');
+FILTERS.forEach(([v,label])=>{
+  const b=document.createElement('button');b.className='f'+(v===cur?' on':'');b.textContent=label;
+  b.onclick=()=>{cur=v;fEl.querySelectorAll('.f').forEach(x=>x.classList.toggle('on',x===b));draw();};
+  fEl.appendChild(b);
+});
+
+/* ---------- cards ---------- */
+const gEl=document.getElementById('grid');
+const gradeText=g=>g.length===3?'1–3 年級':g.map(x=>x+'年級').join('、');
+function draw(){
+  gEl.innerHTML='';
+  LESSONS.forEach((L,i)=>{
+    if(cur!=='all'&&!L.grades.includes(cur))return;
+    const el=document.createElement(L.ready?'a':'div');
+    el.className='lesson'+(L.ready?'':' soon');
+    if(L.ready)el.href=L.href;
+    el.innerHTML=`<div class="thumb" style="background:${L.bg}">
+        <span class="no">#${i+1}</span>${L.kids.map(k=>mk(k[0],k[1])).join('')}<span class="emo">${L.emo}</span></div>
+      <div class="body">
+        <h3>${L.en}<small>${L.zh}</small></h3>
+        <div class="tags"><span class="tag">${gradeText(L.grades)}</span>${L.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <p class="desc">${L.desc}</p>
+        <span class="go">${L.ready?'開始上課 ➜':'即將推出'}</span>
+      </div>`;
+    gEl.appendChild(el);
+  });
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Respect | Classroom Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --yellow:#FFD95A;
+  --yellow-d:#F5C531;
+  --blue:#A9CBF5;
+  --blue-d:#6FA3E8;
+  --teal:#1C4A4E;
+  --teal-2:#25595E;
+  --cream:#FFF8EC;
+  --ink:#1C4A4E;
+  --white:#ffffff;
+  --pink:#F7A9A8;
+  --green:#5CC28A;
+  --red:#F26B5B;
+  --shadow:0 6px 0 rgba(28,74,78,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+h1,h2,h3,.btn,.pill,.word,.tile{font-family:'Baloo 2',cursive}
+a{text-decoration:none;color:inherit}
+section{scroll-margin-top:58px}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(255,248,236,.92);backdrop-filter:blur(6px);border-bottom:3px solid var(--teal);flex-wrap:wrap}
+nav .logo{font-family:'Baloo 2';font-weight:800;font-size:22px;margin-right:auto;display:flex;align-items:center;gap:6px}
+nav .logo span{background:var(--yellow);padding:0 10px;border-radius:12px;border:2px solid var(--teal)}
+.pill{padding:4px 14px;border-radius:999px;border:2px solid var(--teal);background:var(--white);font-weight:700;font-size:16px;transition:.15s}
+.pill:hover{background:var(--yellow);transform:translateY(-2px)}
+.pill.zh-toggle{background:var(--teal);color:var(--white)}
+body.show-zh .pill.zh-toggle{background:var(--yellow);color:var(--teal)}
+
+/* ---------- sections ---------- */
+section{min-height:calc(100vh - 60px);padding:48px 24px 64px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.wrap{width:100%;max-width:1150px}
+.sec-title{font-size:clamp(34px,5vw,56px);font-weight:800;text-align:center;line-height:1.1;margin-bottom:6px}
+.sec-sub{text-align:center;font-size:20px;font-weight:800;margin-bottom:28px;opacity:.85}
+.zh{display:none}
+body.show-zh .zh{display:block}
+body.show-zh span.zh{display:inline;margin-left:6px}
+body.show-zh .sec-sub span.zh,body.show-zh .kind li span.zh{display:block;margin-left:0}
+.zh{color:var(--teal-2);font-size:.85em;opacity:.85}
+.dark .zh{color:#cfe7e2}
+
+.bg-yellow{background:var(--yellow)}
+.bg-blue{background:var(--blue)}
+.bg-teal{background:var(--teal);color:var(--white)}
+.bg-cream{background:var(--cream)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 26px;border-radius:18px;border:3px solid var(--teal);background:var(--white);font-weight:800;font-size:22px;box-shadow:var(--shadow);transition:.12s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(28,74,78,.18)}
+.btn.blue{background:var(--blue)}
+.btn.yellow{background:var(--yellow)}
+.btn.teal{background:var(--teal);color:var(--white)}
+.spk{width:44px;height:44px;border-radius:50%;background:var(--yellow);border:3px solid var(--teal);font-size:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:.12s}
+.spk:hover{transform:scale(1.1)}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:20px}
+.hero h1{font-size:clamp(46px,7.5vw,96px);line-height:.95;font-weight:800;color:var(--white);-webkit-text-stroke:3px var(--teal);paint-order:stroke fill;text-shadow:0 6px 0 var(--teal)}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.tag{display:inline-block;margin:22px 0 26px;background:var(--blue);border:3px solid var(--teal);padding:6px 18px;border-radius:12px;font-family:'Baloo 2';font-weight:800;font-size:20px;letter-spacing:1px}
+.hero-art{position:relative;display:flex;justify-content:center}
+.blob{position:absolute;width:78%;aspect-ratio:1;background:var(--white);border-radius:58% 42% 50% 50%/48% 55% 45% 52%;top:8%;animation:wob 8s ease-in-out infinite}
+@keyframes wob{50%{border-radius:42% 58% 45% 55%/55% 45% 55% 45%;transform:rotate(8deg)}}
+.hero-art svg{position:relative;width:min(340px,80%);animation:float 3.5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+.bubble{position:absolute;top:4%;right:6%;background:var(--white);border:3px solid var(--teal);border-radius:24px;padding:8px 18px;font-family:'Baloo 2';font-weight:800;font-size:26px;transform:rotate(8deg);z-index:2}
+.bubble:after{content:"";position:absolute;bottom:-14px;left:20px;border:10px solid transparent;border-top-color:var(--teal)}
+.letters{display:flex;gap:6px;flex-wrap:wrap}
+.letters button{width:52px;height:60px;border-radius:14px;border:3px solid var(--teal);background:var(--white);font-family:'Baloo 2';font-weight:800;font-size:32px;box-shadow:var(--shadow);transition:.15s}
+.letters button:nth-child(odd){background:var(--blue)}
+.letters button:hover,.letters button.pop{transform:translateY(-8px) rotate(-6deg)}
+
+/* ---------- 3 kinds ---------- */
+.kinds{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kind{background:var(--white);border:3px solid var(--teal);border-radius:28px;padding:18px 18px 22px;text-align:center;box-shadow:var(--shadow);cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.kind:hover{transform:translateY(-6px) rotate(-1deg)}
+.kind svg{width:150px;height:190px}
+.kind h3{font-size:30px;line-height:1}
+.kind .more{max-height:0;overflow:hidden;transition:max-height .35s;font-weight:800;font-size:18px}
+.kind.open .more{max-height:240px;margin-top:8px}
+.kind ul{list-style:none;text-align:left;display:inline-block;margin-top:6px}
+.kind li{margin:4px 0}
+.kind .hint{font-size:14px;opacity:.6;margin-top:6px}
+.kind:nth-child(1){background:#FFF2C2}
+.kind:nth-child(2){background:#DCEBFF}
+.kind:nth-child(3){background:#FFE1E0}
+
+/* ---------- word cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.card{perspective:900px;height:250px;cursor:pointer}
+.card-in{position:relative;width:100%;height:100%;transition:transform .55s;transform-style:preserve-3d}
+.card.flip .card-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border:3px solid var(--teal);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;box-shadow:var(--shadow);text-align:center}
+.front{background:var(--white)}
+.front .art{position:relative;height:150px;display:flex;align-items:flex-end;justify-content:center}
+.front .art svg{height:150px}
+.front .art .emo{position:absolute;top:0;right:-8px;font-size:30px;background:var(--yellow);border:2px solid var(--teal);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+.word{font-size:26px;font-weight:800;line-height:1.1;margin-top:6px}
+.back{background:var(--teal);color:var(--white);transform:rotateY(180deg);gap:10px}
+.back .sent{font-family:'Baloo 2';font-size:26px;font-weight:800;line-height:1.15}
+.back .zh{color:var(--yellow);display:block;font-size:18px}
+body:not(.show-zh) .back .zh{display:none}
+.card:nth-child(4n+1) .front{background:#FFF2C2}
+.card:nth-child(4n+2) .front{background:#DCEBFF}
+.card:nth-child(4n+3) .front{background:#FFE1E0}
+
+/* ---------- game panel shared ---------- */
+.panel{background:var(--white);color:var(--ink);border:3px solid var(--teal);border-radius:32px;padding:24px;box-shadow:0 8px 0 rgba(0,0,0,.2);max-width:900px;margin:0 auto;position:relative}
+.progress{display:flex;gap:6px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.progress i{width:28px;height:28px;border-radius:50%;border:2px solid var(--teal);background:var(--cream);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:15px}
+.progress i.ok{background:var(--green)}
+.progress i.no{background:var(--red)}
+.progress i.now{background:var(--yellow);transform:scale(1.15)}
+.scene{display:flex;justify-content:center;align-items:flex-end;gap:0;background:linear-gradient(#DCEBFF 0 70%,#FFE9A8 70%);border-radius:24px;border:3px solid var(--teal);height:240px;position:relative;overflow:hidden}
+.scene svg{height:220px;margin:0 -6px}
+.scene .prop{position:absolute;font-size:46px;top:18px;left:50%;transform:translateX(-50%);background:var(--white);border:3px solid var(--teal);border-radius:50%;width:76px;height:76px;display:flex;align-items:center;justify-content:center;animation:float 2.6s ease-in-out infinite}
+.qline{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px 0 6px;text-align:center}
+.qtext{font-family:'Baloo 2';font-size:clamp(24px,3.2vw,34px);font-weight:800;line-height:1.15}
+.qzh{text-align:center;margin-bottom:8px}
+.choices{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.choice{min-width:230px;padding:14px 22px;border-radius:22px;border:3px solid var(--teal);font-family:'Baloo 2';font-weight:800;font-size:24px;box-shadow:var(--shadow);transition:.12s;background:var(--cream)}
+.choice:hover{transform:translateY(-3px)}
+.choice.yes{background:#D6F5E3}
+.choice.no{background:#FFDCD7}
+.choice.right{background:var(--green);color:var(--white)}
+.choice.wrong{background:var(--red);color:var(--white);animation:shake .4s}
+.choice:disabled{cursor:default}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.feedback{min-height:64px;margin-top:16px;text-align:center;font-weight:800;font-size:22px}
+.feedback .better{display:inline-flex;align-items:center;gap:10px;background:#FFF2C2;border:2px dashed var(--teal);border-radius:16px;padding:6px 14px;margin-top:6px}
+.next-row{text-align:center;margin-top:8px}
+.done{text-align:center}
+.done svg{height:220px}
+.done h3{font-size:44px}
+.stars{font-size:40px;letter-spacing:4px}
+
+/* ---------- build it ---------- */
+.answer-line{min-height:78px;border:3px dashed var(--teal);border-radius:20px;padding:10px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;background:var(--cream);margin:16px 0}
+.answer-line.good{border-style:solid;background:#D6F5E3}
+.answer-line.bad{animation:shake .4s;background:#FFDCD7}
+.bank{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;min-height:62px}
+.tile{padding:8px 20px;border-radius:16px;border:3px solid var(--teal);background:var(--yellow);font-weight:800;font-size:26px;box-shadow:var(--shadow);transition:.12s}
+.tile:nth-child(3n+2){background:var(--blue)}
+.tile:nth-child(3n){background:var(--pink)}
+.tile:hover{transform:translateY(-3px) rotate(-2deg)}
+.answer-line .tile{background:var(--white)}
+.build-tools{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+
+/* ---------- footer ---------- */
+footer{background:var(--teal);color:var(--white);text-align:center;padding:26px 16px 32px}
+footer .row{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap}
+footer svg{height:150px;margin:0 -10px}
+footer p{font-family:'Baloo 2';font-weight:800;font-size:28px;margin-top:6px}
+
+/* ---------- confetti ---------- */
+.confetti{position:fixed;top:-20px;width:12px;height:16px;z-index:999;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+/* deco */
+.deco{position:absolute;border:3px solid var(--teal);border-radius:50%;pointer-events:none}
+
+@media (max-width:980px){
+  .cards{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .letters{justify-content:center}
+  .kinds{grid-template-columns:1fr}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .card{height:230px}
+  .scene{height:190px}
+  .scene svg{height:170px}
+  .choice{min-width:0;width:100%}
+  section{padding:36px 16px 52px}
+  nav .logo{width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🤝 <span>Respect</span></div>
+  <a class="pill" href="index.html" style="background:var(--yellow)">🏠 品格教育</a>
+  <a class="pill" href="#home">Top</a>
+  <a class="pill" href="#what">What?</a>
+  <a class="pill" href="#words">Words</a>
+  <a class="pill" href="#judge">Yes or No?</a>
+  <a class="pill" href="#say">Say It</a>
+  <a class="pill" href="#build">Build It</a>
+  <button class="pill zh-toggle" id="zhBtn">中文 提示</button>
+</nav>
+
+<!-- ============ HOME ============ -->
+<section id="home" class="bg-yellow">
+  <div class="deco" style="width:120px;height:120px;left:-40px;top:60px;background:var(--blue)"></div>
+  <div class="deco" style="width:70px;height:70px;right:4%;bottom:40px;background:var(--pink)"></div>
+  <div class="wrap hero">
+    <div>
+      <h1>Let's learn<br>about <em>Respect!</em></h1>
+      <div class="tag">BE KIND · BE NICE · BE A GOOD FRIEND</div>
+      <div class="letters" id="letters"></div>
+      <p class="zh" style="margin-top:14px;font-size:20px">點一點字母，跟著唸 R-E-S-P-E-C-T！</p>
+      <div style="margin-top:26px"><a href="#what" class="btn teal">Let's go! ➜</a></div>
+    </div>
+    <div class="hero-art">
+      <div class="blob"></div>
+      <div class="bubble">Hello!</div>
+      <div id="heroKid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT IS RESPECT ============ -->
+<section id="what" class="bg-blue">
+  <div class="wrap">
+    <h2 class="sec-title">What is respect?</h2>
+    <p class="sec-sub">Respect means we are kind to people, things, and ourselves.<span class="zh">尊重，就是對別人、對東西、對自己都很友善。</span></p>
+    <p class="sec-sub" style="font-size:16px;margin-top:-18px">👆 Tap a card!</p>
+    <div class="kinds" id="kinds"></div>
+  </div>
+</section>
+
+<!-- ============ WORD CARDS ============ -->
+<section id="words" class="bg-cream">
+  <div class="wrap">
+    <h2 class="sec-title">Respect Words</h2>
+    <p class="sec-sub">Tap a card to flip it. Tap 🔊 to listen.<span class="zh">點卡片翻面，點喇叭聽發音。</span></p>
+    <div class="cards" id="cards"></div>
+    <div style="text-align:center;margin-top:26px"><button class="btn yellow" id="flipAll">🔄 Flip all</button></div>
+  </div>
+</section>
+
+<!-- ============ JUDGE ============ -->
+<section id="judge" class="bg-teal dark">
+  <div class="wrap">
+    <h2 class="sec-title">Respectful or not?</h2>
+    <p class="sec-sub">Look and listen. Is it respectful?<span class="zh">看一看、聽一聽：這樣有尊重嗎？</span></p>
+    <div class="panel" id="judgePanel"></div>
+  </div>
+</section>
+
+<!-- ============ SAY IT ============ -->
+<section id="say" class="bg-yellow">
+  <div class="wrap">
+    <h2 class="sec-title">What do you say?</h2>
+    <p class="sec-sub">Pick the best words.<span class="zh">選出最有禮貌的說法。</span></p>
+    <div class="panel" id="sayPanel"></div>
+  </div>
+</section>
+
+<!-- ============ BUILD IT ============ -->
+<section id="build" class="bg-blue">
+  <div class="wrap">
+    <h2 class="sec-title">Build the sentence!</h2>
+    <p class="sec-sub">Tap the words in order.<span class="zh">依照順序點單字，排出正確的句子。</span></p>
+    <div class="panel" id="buildPanel"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="row" id="footKids"></div>
+  <p>I show respect every day! 🌟</p>
+</footer>
+
+<script>
+/* =========================================================
+   Character maker (original "trendy humans" style)
+   ========================================================= */
+const SKIN=['#F6D2B4','#E8B48E','#C98F65','#9C6644','#F2C29B'];
+const INK='#1C4A4E';
+function person(o={}){
+  const skin=o.skin||SKIN[0], hair=o.hair||'#3B2A20', style=o.style||'short',
+        shirt=o.shirt||'#6FA3E8', pants=o.pants||'#1C4A4E', shoe=o.shoe||'#ffffff',
+        pose=o.pose||'down', face=o.face||'happy', flip=o.flip?'transform="translate(200,0) scale(-1,1)"':'';
+  const sw='stroke="'+INK+'" stroke-width="3"';
+  // arms
+  const arm=(d,hx,hy)=>`<path d="${d}" fill="none" stroke="${INK}" stroke-width="24" stroke-linecap="round"/><path d="${d}" fill="none" stroke="${shirt}" stroke-width="18" stroke-linecap="round"/><circle cx="${hx}" cy="${hy}" r="11" fill="${skin}" ${sw}/>`;
+  let arms='';
+  const L={down:['M74 140 Q52 172 58 205',58,207],up:['M74 140 Q44 118 38 80',38,78],hold:['M74 140 Q70 186 96 188',96,188],hip:['M74 140 Q46 160 66 182',66,184]};
+  const R={down:['M126 140 Q148 172 142 205',142,207],up:['M126 140 Q156 118 162 80',162,78],wave:['M126 140 Q160 126 164 84',164,80],hold:['M126 140 Q130 186 104 188',104,188],point:['M126 140 Q156 150 182 136',184,135],hip:['M126 140 Q154 160 134 182',134,184]};
+  const pl={down:['down','down'],wave:['down','wave'],cheer:['up','up'],hold:['hold','hold'],point:['down','point'],hip:['hip','hip']}[pose]||['down','down'];
+  const a1=L[pl[0]], a2=R[pl[1]];
+  arms=arm(...a1)+arm(...a2);
+  // hair behind head
+  let back='', front='';
+  if(style==='long'){back=`<path d="M50 80 Q46 26 100 26 Q154 26 150 80 L156 160 Q100 176 44 160Z" fill="${hair}" ${sw}/>`;}
+  if(style==='pony'){back=`<path d="M142 46 Q182 50 170 104 Q160 128 150 112 Q166 80 140 66Z" fill="${hair}" ${sw}/>`;}
+  if(style==='bun'){back=`<circle cx="100" cy="30" r="19" fill="${hair}" ${sw}/>`;}
+  if(style==='twin'){back=`<circle cx="50" cy="58" r="17" fill="${hair}" ${sw}/><circle cx="150" cy="58" r="17" fill="${hair}" ${sw}/>`;}
+  const fronts={
+    short:`<path d="M54 82 Q48 28 100 28 Q152 28 146 80 Q138 56 112 54 Q118 64 104 66 Q76 50 54 82Z" fill="${hair}" ${sw}/>`,
+    long:`<path d="M54 86 Q50 30 100 30 Q150 30 146 86 Q132 58 100 58 Q70 58 54 86Z" fill="${hair}" ${sw}/>`,
+    bob:`<path d="M48 108 Q40 28 100 28 Q160 28 152 108 L138 108 Q142 62 100 60 Q58 62 62 108Z" fill="${hair}" ${sw}/>`,
+    pony:`<path d="M54 84 Q50 30 100 30 Q150 30 146 82 Q122 60 86 62 Q66 64 54 84Z" fill="${hair}" ${sw}/>`,
+    bun:`<path d="M54 82 Q52 42 100 40 Q148 42 146 82 Q126 58 100 58 Q74 58 54 82Z" fill="${hair}" ${sw}/>`,
+    twin:`<path d="M54 84 Q50 32 100 32 Q150 32 146 84 Q128 60 100 62 Q72 60 54 84Z" fill="${hair}" ${sw}/>`,
+    curly:`<g fill="${hair}" ${sw}><circle cx="62" cy="62" r="18"/><circle cx="82" cy="40" r="20"/><circle cx="110" cy="36" r="21"/><circle cx="136" cy="50" r="19"/><circle cx="146" cy="74" r="14"/><circle cx="54" cy="84" r="12"/></g>`,
+    cap:`<path d="M52 72 Q52 28 100 28 Q148 28 148 72Z" fill="${hair}" ${sw}/><path d="M120 66 Q162 62 176 74 Q150 80 120 76Z" fill="${hair}" ${sw}/>`
+  };
+  front=fronts[style]||fronts.short;
+  // face
+  const eyeDot=`<ellipse cx="84" cy="84" rx="4.5" ry="5.5" fill="${INK}"/><ellipse cx="116" cy="84" rx="4.5" ry="5.5" fill="${INK}"/>`;
+  const cheeks=`<circle cx="72" cy="98" r="7" fill="#F7A9A8" opacity=".8"/><circle cx="128" cy="98" r="7" fill="#F7A9A8" opacity=".8"/>`;
+  const st=`fill="none" stroke="${INK}" stroke-width="3.5" stroke-linecap="round"`;
+  const faces={
+    happy:`<path d="M77 86 Q84 77 91 86" ${st}/><path d="M109 86 Q116 77 123 86" ${st}/><path d="M88 102 Q100 114 112 102" ${st}/>${cheeks}`,
+    open:`${eyeDot}<path d="M88 100 Q100 100 112 100 Q110 116 100 116 Q90 116 88 100Z" fill="#8A3B3B" stroke="${INK}" stroke-width="3"/>${cheeks}`,
+    sad:`${eyeDot}<path d="M76 74 L90 78" ${st}/><path d="M124 74 L110 78" ${st}/><path d="M90 110 Q100 101 110 110" ${st}/><path d="M80 94 Q78 102 81 106" fill="none" stroke="#6FA3E8" stroke-width="4" stroke-linecap="round"/>`,
+    oops:`${eyeDot}<ellipse cx="100" cy="106" rx="6" ry="7" fill="#8A3B3B" stroke="${INK}" stroke-width="3"/>${cheeks}`,
+    mad:`${eyeDot}<path d="M76 74 L92 80" ${st}/><path d="M124 74 L108 80" ${st}/><path d="M88 106 Q100 100 112 106" ${st}/>`,
+    calm:`${eyeDot}<path d="M90 104 Q100 110 110 104" ${st}/>${cheeks}`
+  };
+  return `<svg viewBox="0 0 200 290" xmlns="http://www.w3.org/2000/svg"><g ${flip}>
+    ${back}
+    <path d="M86 208 L82 262" stroke="${INK}" stroke-width="26" stroke-linecap="round"/><path d="M86 208 L82 262" stroke="${pants}" stroke-width="20" stroke-linecap="round"/>
+    <path d="M114 208 L118 262" stroke="${INK}" stroke-width="26" stroke-linecap="round"/><path d="M114 208 L118 262" stroke="${pants}" stroke-width="20" stroke-linecap="round"/>
+    <ellipse cx="76" cy="272" rx="20" ry="11" fill="${shoe}" ${sw}/><ellipse cx="124" cy="272" rx="20" ry="11" fill="${shoe}" ${sw}/>
+    <rect x="66" y="122" width="68" height="94" rx="28" fill="${shirt}" ${sw}/>
+    <path d="M86 124 Q100 136 114 124" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${arms}
+    <circle cx="54" cy="86" r="9" fill="${skin}" ${sw}/><circle cx="146" cy="86" r="9" fill="${skin}" ${sw}/>
+    <circle cx="100" cy="80" r="47" fill="${skin}" ${sw}/>
+    ${front}
+    ${faces[face]||faces.happy}
+  </g></svg>`;
+}
+
+/* ---------- people presets ---------- */
+const P={
+  amy:{skin:SKIN[0],hair:'#5A3825',style:'long',shirt:'#FFFFFF',pants:'#6FA3E8',shoe:'#fff'},
+  tom:{skin:SKIN[1],hair:'#2B1D14',style:'short',shirt:'#FFD95A',pants:'#1C4A4E'},
+  mia:{skin:SKIN[2],hair:'#1E1410',style:'curly',shirt:'#F7A9A8',pants:'#6FA3E8'},
+  leo:{skin:SKIN[4],hair:'#E0A040',style:'cap',shirt:'#5CC28A',pants:'#1C4A4E'},
+  kim:{skin:SKIN[0],hair:'#2B1D14',style:'bob',shirt:'#A9CBF5',pants:'#F26B5B'},
+  ben:{skin:SKIN[3],hair:'#1E1410',style:'short',shirt:'#F26B5B',pants:'#2E4057'},
+  ann:{skin:SKIN[1],hair:'#7A4A2A',style:'pony',shirt:'#FFD95A',pants:'#6FA3E8'},
+  joy:{skin:SKIN[2],hair:'#1E1410',style:'twin',shirt:'#A9CBF5',pants:'#F7A9A8'},
+  sam:{skin:SKIN[4],hair:'#3B2A20',style:'curly',shirt:'#FFFFFF',pants:'#5CC28A'},
+  zoe:{skin:SKIN[0],hair:'#C0582E',style:'bun',shirt:'#5CC28A',pants:'#1C4A4E'},
+  teacher:{skin:SKIN[1],hair:'#3B2A20',style:'bun',shirt:'#1C4A4E',pants:'#6FA3E8'}
+};
+const mk=(k,extra={})=>person(Object.assign({},P[k],extra));
+
+/* =========================================================
+   Speech + sounds
+   ========================================================= */
+let voice=null;
+function pickVoice(){
+  const vs=speechSynthesis.getVoices();
+  voice=vs.find(v=>/en-US/i.test(v.lang)&&/female|samantha|google us/i.test(v.name))||vs.find(v=>/en-US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null;
+}
+if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t);
+  u.lang='en-US';u.rate=.85;u.pitch=1.1;if(voice)u.voice=voice;
+  speechSynthesis.speak(u);
+}
+let actx=null;
+function tone(freqs,dur=.12,type='sine'){
+  try{
+    actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    freqs.forEach((f,i)=>{
+      const o=actx.createOscillator(),g=actx.createGain();
+      o.type=type;o.frequency.value=f;
+      const t=actx.currentTime+i*dur;
+      g.gain.setValueAtTime(.18,t);g.gain.exponentialRampToValueAtTime(.001,t+dur*1.6);
+      o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+dur*1.7);
+    });
+  }catch(e){}
+}
+const ding=()=>tone([660,880,1100],.1);
+const buzz=()=>tone([220,180],.15,'triangle');
+const pop=()=>tone([520],.06);
+function confetti(n=60){
+  const cols=['#FFD95A','#A9CBF5','#F7A9A8','#5CC28A','#ffffff'];
+  for(let i=0;i<n;i++){
+    const d=document.createElement('div');d.className='confetti';
+    d.style.left=Math.random()*100+'vw';
+    d.style.background=cols[i%cols.length];
+    d.style.borderRadius=Math.random()>.5?'50%':'3px';
+    d.style.animationDuration=(1.8+Math.random()*1.8)+'s';
+    d.style.animationDelay=Math.random()*.4+'s';
+    document.body.appendChild(d);setTimeout(()=>d.remove(),4200);
+  }
+}
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const esc=s=>s.replace(/'/g,"\\'");
+
+/* ---------- zh toggle ---------- */
+document.getElementById('zhBtn').onclick=()=>document.body.classList.toggle("show-zh");
+
+/* =========================================================
+   HOME
+   ========================================================= */
+document.getElementById('heroKid').innerHTML=mk('amy',{pose:'wave'});
+const lettersEl=document.getElementById('letters');
+'RESPECT'.split('').forEach((c,i)=>{
+  const b=document.createElement('button');b.textContent=c;
+  b.onclick=()=>{say(c);b.classList.add('pop');setTimeout(()=>b.classList.remove('pop'),300);};
+  lettersEl.appendChild(b);
+});
+const spell=document.createElement('button');spell.className='spk';spell.style.marginLeft='6px';spell.textContent='🔊';spell.title='Spell it';
+spell.onclick=()=>say('R. E. S. P. E. C. T. Respect!');
+lettersEl.appendChild(spell);
+
+/* =========================================================
+   WHAT IS RESPECT
+   ========================================================= */
+const kinds=[
+  {t:'Others',zh:'尊重別人',k:mk('tom',{pose:'wave'}),items:['I say please and thank you.','I listen.','I wait my turn.'],izh:['我會說請和謝謝。','我會專心聽。','我會排隊等待。']},
+  {t:'Things',zh:'尊重物品',k:mk('kim',{pose:'hold'}),items:['I am gentle with books.','I ask before I use.','I clean up.'],izh:['我會輕輕拿書。','用之前先問。','我會收拾乾淨。']},
+  {t:'Myself',zh:'尊重自己',k:mk('mia',{pose:'cheer'}),items:['I take care of my body.','I try my best.','I say "I can do it!"'],izh:['我會照顧身體。','我會盡力。','我會說「我做得到！」']}
+];
+const kindsEl=document.getElementById('kinds');
+kinds.forEach(k=>{
+  const d=document.createElement('div');d.className='kind';
+  d.innerHTML=`${k.k}<h3>Respect ${k.t}</h3><div class="zh">${k.zh}</div>
+    <div class="more"><ul>${k.items.map((x,i)=>`<li>✔ ${x}<span class="zh">${k.izh[i]}</span></li>`).join('')}</ul></div>
+    <div class="hint">tap me</div>`;
+  d.onclick=()=>{d.classList.toggle('open');if(d.classList.contains('open')){pop();say('Respect '+k.t.toLowerCase()+'. '+k.items.join(' '));}};
+  kindsEl.appendChild(d);
+});
+
+/* =========================================================
+   WORD CARDS
+   ========================================================= */
+const words=[
+  {w:'please',s:'Please help me.',zh:'請',k:'ann',pose:'hold',e:'🙏'},
+  {w:'thank you',s:'Thank you!',zh:'謝謝',k:'tom',pose:'wave',e:'💛'},
+  {w:"I'm sorry",s:"I'm sorry.",zh:'對不起',k:'kim',pose:'down',face:'sad',e:'🩹'},
+  {w:'excuse me',s:'Excuse me.',zh:'不好意思／借過',k:'leo',pose:'point',e:'🚶'},
+  {w:'share',s:"Let's share.",zh:'分享',k:'mia',pose:'hold',e:'🖍️'},
+  {w:'listen',s:'I listen to my teacher.',zh:'專心聽',k:'joy',pose:'down',face:'calm',e:'👂'},
+  {w:'wait',s:'I wait my turn.',zh:'等待',k:'sam',pose:'hip',face:'calm',e:'⏳'},
+  {w:'help',s:'Can I help you?',zh:'幫忙',k:'zoe',pose:'wave',e:'🤝'},
+  {w:'take turns',s:"Let's take turns.",zh:'輪流',k:'ben',pose:'cheer',e:'🔁'},
+  {w:'be gentle',s:'Be gentle with books.',zh:'輕輕的、溫柔的',k:'amy',pose:'hold',e:'📘'}
+];
+const cardsEl=document.getElementById('cards');
+words.forEach(x=>{
+  const c=document.createElement('div');c.className='card';
+  c.innerHTML=`<div class="card-in">
+    <div class="face front"><div class="art">${mk(x.k,{pose:x.pose,face:x.face||'happy'})}<div class="emo">${x.e}</div></div>
+      <div class="word">${x.w}</div></div>
+    <div class="face back"><div class="sent">${x.s}</div><div class="zh">${x.zh}</div>
+      <button class="spk" aria-label="listen">🔊</button></div></div>`;
+  c.onclick=e=>{
+    if(e.target.closest('.spk')){e.stopPropagation();say(x.s);return;}
+    c.classList.toggle('flip');pop();
+    say(c.classList.contains('flip')?x.s:x.w);
+  };
+  cardsEl.appendChild(c);
+});
+let allFlipped=false;
+document.getElementById('flipAll').onclick=()=>{
+  allFlipped=!allFlipped;
+  document.querySelectorAll('.card').forEach((c,i)=>setTimeout(()=>c.classList.toggle('flip',allFlipped),i*60));
+};
+
+/* =========================================================
+   GAME 1: RESPECTFUL OR NOT
+   ========================================================= */
+const judgeQs=[
+  {t:'Amy helps Tom. Tom says, "Thank you!"',zh:'Amy 幫忙 Tom，Tom 說「謝謝！」',a:true,
+   L:['amy',{pose:'hold'}],R:['tom',{pose:'wave',flip:1}],p:'💛'},
+  {t:'Ben pushes in line.',zh:'Ben 排隊時插隊、推別人。',a:false,better:'Wait in line.',bzh:'排隊等待。',
+   L:['ben',{pose:'point',face:'mad'}],R:['joy',{pose:'down',face:'sad',flip:1}],p:'🚸'},
+  {t:'Mia listens when the teacher talks.',zh:'老師說話時，Mia 專心聽。',a:true,
+   L:['teacher',{pose:'point'}],R:['mia',{pose:'down',face:'calm',flip:1}],p:'👂'},
+  {t:"Leo takes Kim's pencil. He does not ask.",zh:'Leo 沒問就拿走 Kim 的鉛筆。',a:false,better:'May I use your pencil?',bzh:'我可以用你的鉛筆嗎？',
+   L:['leo',{pose:'hold',face:'oops'}],R:['kim',{pose:'hip',face:'mad',flip:1}],p:'✏️'},
+  {t:'Ann asks, "May I use your eraser?"',zh:'Ann 問：「我可以用你的橡皮擦嗎？」',a:true,
+   L:['ann',{pose:'hold'}],R:['sam',{pose:'wave',flip:1}],p:'🧽'},
+  {t:'Sam laughs at a friend who falls down.',zh:'朋友跌倒了，Sam 在旁邊笑他。',a:false,better:'Are you OK?',bzh:'你還好嗎？',
+   L:['sam',{pose:'point',face:'open'}],R:['zoe',{pose:'down',face:'sad',flip:1}],p:'🤕'},
+  {t:'Kai shares his crayons.',zh:'Kai 和朋友分享蠟筆。',a:true,
+   L:['ben',{pose:'hold'}],R:['ann',{pose:'cheer',flip:1}],p:'🖍️'},
+  {t:'Joy throws trash on the floor.',zh:'Joy 把垃圾丟在地上。',a:false,better:'Put it in the trash can.',bzh:'把它丟進垃圾桶。',
+   L:['joy',{pose:'point',face:'oops'}],R:['tom',{pose:'hip',face:'sad',flip:1}],p:'🗑️'},
+  {t:'Max waits for his turn on the slide.',zh:'Max 排隊等溜滑梯。',a:true,
+   L:['leo',{pose:'cheer'}],R:['mia',{pose:'hip',face:'calm',flip:1}],p:'🛝'},
+  {t:'Zoe shouts when her friend is talking.',zh:'朋友在說話時，Zoe 大聲吼叫。',a:false,better:'Wait. Then talk.',bzh:'先等一下，再說話。',
+   L:['zoe',{pose:'cheer',face:'open'}],R:['kim',{pose:'down',face:'sad',flip:1}],p:'📢'}
+];
+function makeQuiz(panelId,qs,render){
+  const panel=document.getElementById(panelId);
+  let order,idx,res;
+  function start(){order=shuffle(qs);idx=0;res=[];show();}
+  function prog(){return `<div class="progress">${order.map((_,i)=>`<i class="${i<res.length?(res[i]?'ok':'no'):(i===idx?'now':'')}">${i+1}</i>`).join('')}</div>`;}
+  function show(){
+    if(idx>=order.length){finish();return;}
+    panel.innerHTML=prog();
+    render(panel,order[idx],ok=>{res.push(ok);
+      panel.querySelector('.progress').outerHTML=prog();
+      const nr=document.createElement('div');nr.className='next-row';
+      nr.innerHTML=`<button class="btn teal">${idx===order.length-1?'Finish ★':'Next ➜'}</button>`;
+      nr.querySelector('button').onclick=()=>{idx++;show();};
+      panel.appendChild(nr);
+    });
+  }
+  function finish(){
+    const s=res.filter(Boolean).length, n=order.length, r=s/n;
+    const st=r===1?'★★★':r>=.7?'★★☆':r>=.4?'★☆☆':'☆☆☆';
+    panel.innerHTML=`<div class="done">${mk('mia',{pose:'cheer',face:r>=.7?'open':'happy'})}
+      <h3>${r===1?'Perfect!':r>=.7?'Great job!':'Good try!'}</h3>
+      <div class="stars">${st}</div>
+      <p style="font-size:24px;font-weight:800;margin:6px 0 16px">${s} / ${n}</p>
+      <button class="btn yellow">🔁 Play again</button></div>`;
+    panel.querySelector('button').onclick=start;
+    if(r>=.7)confetti(90);
+    say(r===1?'Perfect!':r>=.7?'Great job!':'Good try!');
+  }
+  start();
+}
+function sceneHTML(q){
+  return `<div class="scene">${mk(q.L[0],q.L[1])}${mk(q.R[0],q.R[1])}<div class="prop">${q.p}</div></div>`;
+}
+makeQuiz('judgePanel',judgeQs,(panel,q,done)=>{
+  const box=document.createElement('div');
+  box.innerHTML=`${sceneHTML(q)}
+    <div class="qline"><div class="qtext">${q.t}</div><button class="spk">🔊</button></div>
+    <div class="qzh zh">${q.zh}</div>
+    <div class="choices">
+      <button class="choice yes" data-v="1">👍 Respectful</button>
+      <button class="choice no" data-v="0">👎 Not respectful</button>
+    </div>
+    <div class="feedback"></div>`;
+  panel.appendChild(box);
+  box.querySelector('.spk').onclick=()=>say(q.t);
+  setTimeout(()=>say(q.t),250);
+  box.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{
+    const pick=b.dataset.v==='1', ok=pick===q.a;
+    box.querySelectorAll('.choice').forEach(x=>{x.disabled=true;if((x.dataset.v==='1')===q.a)x.classList.add('right');});
+    if(!ok)b.classList.add('wrong');
+    const fb=box.querySelector('.feedback');
+    if(q.a){
+      fb.innerHTML=`${ok?'✅ Yes!':'Oops!'} It is respectful. 👏<span class="zh">這樣是尊重喔！</span>`;
+    }else{
+      fb.innerHTML=`${ok?'✅ Right!':'Oops!'} It is not respectful.<br>
+        <span class="better">Better: <b>${q.better}</b> <button class="spk" style="width:34px;height:34px;font-size:15px">🔊</button></span>
+        <span class="zh">更好的做法：${q.bzh}</span>`;
+      fb.querySelector('.spk').onclick=()=>say(q.better);
+    }
+    ok?(ding(),confetti(25)):buzz();
+    setTimeout(()=>say(q.a?'It is respectful.':'Not respectful. Better: '+q.better),350);
+    done(ok);
+  });
+});
+
+/* =========================================================
+   GAME 2: WHAT DO YOU SAY?
+   ========================================================= */
+const sayQs=[
+  {t:'You want to use a pencil.',zh:'你想借鉛筆。',a:'May I use your pencil?',o:['Give me!','Go away.'],
+   L:['ann',{pose:'hold'}],R:['tom',{pose:'down',flip:1}],p:'✏️'},
+  {t:'Your friend gives you a gift.',zh:'朋友送你一份禮物。',a:'Thank you!',o:['No!','Bye.'],
+   L:['zoe',{pose:'hold'}],R:['leo',{pose:'cheer',face:'open',flip:1}],p:'🎁'},
+  {t:'You bump into a friend.',zh:'你不小心撞到朋友。',a:"I'm sorry.",o:['Ha ha!','Move!'],
+   L:['ben',{pose:'down',face:'oops'}],R:['kim',{pose:'hip',face:'sad',flip:1}],p:'💥'},
+  {t:'You want to walk past.',zh:'你想從別人旁邊走過去。',a:'Excuse me.',o:['Go away!','Hello.'],
+   L:['sam',{pose:'point'}],R:['joy',{pose:'down',face:'calm',flip:1}],p:'🚶'},
+  {t:'You want to play with them.',zh:'你想跟他們一起玩。',a:'Can I play with you?',o:['Give me the ball!','I go.'],
+   L:['mia',{pose:'wave'}],R:['ben',{pose:'hold',flip:1}],p:'⚽'},
+  {t:'Your friend is sad.',zh:'你的朋友很難過。',a:'Are you OK?',o:['So what?','Ha ha!'],
+   L:['tom',{pose:'hold',face:'calm'}],R:['amy',{pose:'down',face:'sad',flip:1}],p:'💧'},
+  {t:'You need help.',zh:'你需要幫忙。',a:'Please help me.',o:['Help! Now!','You do it.'],
+   L:['leo',{pose:'hold',face:'oops'}],R:['teacher',{pose:'down',flip:1}],p:'📦'},
+  {t:'Your friend says, "Thank you!"',zh:'朋友對你說「謝謝！」',a:"You're welcome.",o:['Go away.','No.'],
+   L:['kim',{pose:'wave'}],R:['zoe',{pose:'cheer',flip:1}],p:'😊'}
+];
+makeQuiz('sayPanel',sayQs,(panel,q,done)=>{
+  const box=document.createElement('div');
+  const opts=shuffle([q.a,...q.o]);
+  box.innerHTML=`${sceneHTML(q)}
+    <div class="qline"><div class="qtext">${q.t}</div><button class="spk">🔊</button></div>
+    <div class="qzh zh">${q.zh}</div>
+    <div class="choices">${opts.map(o=>`<button class="choice">${o}</button>`).join('')}</div>
+    <div class="feedback"></div>`;
+  panel.appendChild(box);
+  box.querySelector('.spk').onclick=()=>say(q.t);
+  setTimeout(()=>say(q.t+' What do you say?'),250);
+  box.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{
+    const ok=b.textContent===q.a;
+    box.querySelectorAll('.choice').forEach(x=>{x.disabled=true;if(x.textContent===q.a)x.classList.add('right');});
+    if(!ok)b.classList.add('wrong');
+    box.querySelector('.feedback').innerHTML=ok?`✅ Yes! "${q.a}"`:`Oops! Say: "${q.a}"`;
+    ok?(ding(),confetti(25)):buzz();
+    setTimeout(()=>say(q.a),350);
+    done(ok);
+  });
+});
+
+/* =========================================================
+   GAME 3: BUILD IT
+   ========================================================= */
+const buildQs=[
+  {s:'May I use your pencil?',zh:'我可以用你的鉛筆嗎？',k:'ann',p:'✏️'},
+  {s:'Thank you for your help.',zh:'謝謝你的幫忙。',k:'tom',p:'💛'},
+  {s:'Can I play with you?',zh:'我可以跟你一起玩嗎？',k:'mia',p:'⚽'},
+  {s:"I'm sorry. Are you OK?",zh:'對不起，你還好嗎？',k:'kim',p:'🩹'},
+  {s:'Excuse me, please.',zh:'不好意思，請借過。',k:'leo',p:'🚶'},
+  {s:'I wait my turn.',zh:'我等輪到我。',k:'sam',p:'⏳'},
+  {s:"Let's share the crayons.",zh:'我們一起分享蠟筆吧。',k:'joy',p:'🖍️'}
+];
+(function(){
+  const panel=document.getElementById('buildPanel');
+  let order,idx,res,tries;
+  const words=s=>s.split(' ');
+  function start(){order=shuffle(buildQs);idx=0;res=[];show();}
+  function prog(){return `<div class="progress">${order.map((_,i)=>`<i class="${i<res.length?(res[i]?'ok':'no'):(i===idx?'now':'')}">${i+1}</i>`).join('')}</div>`;}
+  function show(){
+    if(idx>=order.length)return finish();
+    const q=order[idx];tries=0;
+    let bank=shuffle(words(q.s).map((w,i)=>({w,i})));
+    if(bank.map(b=>b.w).join(' ')===q.s&&bank.length>1)bank=bank.reverse();
+    let ans=[];
+    panel.innerHTML=`${prog()}
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap">
+        <div style="width:120px;position:relative">${mk(q.k,{pose:'wave'})}</div>
+        <div><div class="qline" style="margin:0"><div class="qtext">${q.p} Listen and build!</div><button class="spk" id="bSpk">🔊</button></div>
+        <div class="qzh zh" style="font-size:20px">${q.zh}</div></div>
+      </div>
+      <div class="answer-line" id="ansLine"></div>
+      <div class="bank" id="bank"></div>
+      <div class="build-tools">
+        <button class="btn" id="bClear">↺ Clear</button>
+        <button class="btn yellow" id="bHint">💡 Hint</button>
+        <button class="btn teal" id="bCheck">✔ Check</button>
+      </div>
+      <div class="feedback" id="bFb"></div>`;
+    const ansEl=panel.querySelector('#ansLine'), bankEl=panel.querySelector('#bank'), fb=panel.querySelector('#bFb');
+    panel.querySelector('#bSpk').onclick=()=>say(q.s);
+    setTimeout(()=>say(q.s),250);
+    function draw(){
+      bankEl.innerHTML='';ansEl.innerHTML='';
+      bank.forEach((t,i)=>{const b=document.createElement('button');b.className='tile';b.textContent=t.w;
+        b.onclick=()=>{pop();ans.push(t);bank.splice(i,1);draw();};bankEl.appendChild(b);});
+      ans.forEach((t,i)=>{const b=document.createElement('button');b.className='tile';b.textContent=t.w;
+        b.onclick=()=>{bank.push(t);ans.splice(i,1);draw();};ansEl.appendChild(b);});
+      if(!ans.length)ansEl.innerHTML='<span style="opacity:.45;font-weight:800">Tap the words ⬇</span>';
+      ansEl.classList.remove('good','bad');
+    }
+    draw();
+    panel.querySelector('#bClear').onclick=()=>{bank=bank.concat(ans);ans=[];draw();};
+    panel.querySelector('#bHint').onclick=()=>{
+      // put the next correct word in place
+      const target=words(q.s);
+      let k=0;while(k<ans.length&&ans[k].w===target[k])k++;
+      bank=bank.concat(ans.splice(k));
+      const j=bank.findIndex(b=>b.w===target[k]);
+      if(j>-1){ans.push(bank[j]);bank.splice(j,1);}
+      tries++;draw();say(target[k]||'');
+    };
+    panel.querySelector('#bCheck').onclick=()=>{
+      if(bank.length){fb.textContent='Use all the words!';buzz();return;}
+      const ok=ans.map(a=>a.w).join(' ')===q.s;
+      if(ok){
+        ansEl.classList.add('good');ding();confetti(40);say(q.s);
+        const first=tries===0;
+        res.push(first);
+        fb.innerHTML=first?'✅ Great! You did it!':'✅ You did it!';
+        panel.querySelector('.build-tools').innerHTML=`<button class="btn teal" id="bNext">${idx===order.length-1?'Finish ★':'Next ➜'}</button>`;
+        panel.querySelector('.progress').outerHTML=prog();
+        panel.querySelector('#bNext').onclick=()=>{idx++;show();};
+      }else{
+        tries++;ansEl.classList.add('bad');buzz();fb.textContent='Try again! 💪';
+        setTimeout(()=>ansEl.classList.remove('bad'),500);
+      }
+    };
+  }
+  function finish(){
+    const s=res.filter(Boolean).length,n=order.length,r=s/n;
+    panel.innerHTML=`<div class="done">${mk('tom',{pose:'cheer',face:'open'})}
+      <h3>${r===1?'Super star!':'Great job!'}</h3>
+      <div class="stars">${r===1?'★★★':r>=.6?'★★☆':'★☆☆'}</div>
+      <p style="font-size:20px;font-weight:800;margin:6px 0 16px">No-hint answers: ${s} / ${n}</p>
+      <button class="btn yellow">🔁 Play again</button></div>`;
+    panel.querySelector('button').onclick=start;
+    confetti(100);say('Great job!');
+  }
+  start();
+})();
+
+/* ---------- footer kids ---------- */
+document.getElementById('footKids').innerHTML=
+  ['amy','tom','mia','leo','kim','ben','joy'].map((k,i)=>mk(k,{pose:i%2?'cheer':'wave',face:i%3?'happy':'open'})).join('');
+</script>
+</body>
+</html>
