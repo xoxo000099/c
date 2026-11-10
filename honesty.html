@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>誠實 Honesty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;500;600;700&family=Huninn&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F8F3E8; --paper:#FFFDF7; --ink:#2A2A2A; --text:#23444A; --teal:#1F7F86; --teal-d:#1F5F64;
+  --mint:#8ED1C6; --mint-l:#CDEBE5; --yellow:#F4BE3A; --yellow-l:#FBE7B5; --orange:#EE7D2B;
+  --pink:#F3A6A0; --pink-l:#FBD9D5; --coral:#EF6F61; --lav:#E7E4F5;
+  --zh:'Huninn','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  --en:'Fredoka','Huninn','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  --disp:'Luckiest Guy','Huninn','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--en);color:var(--text);background:var(--cream);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:none;background:none;cursor:pointer}
+.zhf{font-family:var(--zh)}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--paper);border-bottom:4px solid var(--ink);flex-wrap:wrap}
+nav .logo{font-family:var(--disp);font-size:26px;margin-right:auto;color:var(--orange);-webkit-text-stroke:1.5px var(--ink);text-shadow:2px 2px 0 var(--ink);letter-spacing:1px}
+.pill{padding:4px 14px;border-radius:999px;border:3px solid var(--ink);background:var(--paper);font-weight:600;font-size:16px;box-shadow:3px 3px 0 var(--ink);transition:.12s}
+.pill:hover{transform:translateY(-2px)}
+.pill:active{transform:translate(3px,3px);box-shadow:none}
+.pill.home{background:var(--yellow)}
+.pill.zh-toggle{background:var(--teal);color:var(--paper);font-family:var(--zh)}
+body.show-zh .pill.zh-toggle{background:var(--mint);color:var(--ink)}
+
+/* ---------- sections ---------- */
+section{min-height:calc(100vh - 62px);padding:56px 24px 72px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;scroll-margin-top:62px;overflow:hidden;border-bottom:4px solid var(--ink)}
+.wrap{width:100%;max-width:1150px;position:relative;z-index:1}
+.tag{display:inline-block;font-size:20px;background:var(--mint);border:3px solid var(--ink);border-radius:40px;padding:4px 22px;font-weight:500}
+.center{text-align:center}
+.h2{font-family:var(--disp);font-weight:400;font-size:clamp(40px,6vw,68px);line-height:1.15;color:var(--orange);-webkit-text-stroke:2.5px var(--ink);text-shadow:4px 4px 0 var(--ink);margin:14px 0 8px;letter-spacing:1px}
+.sub{font-size:21px;font-weight:600;color:var(--teal-d);margin-bottom:30px}
+.zh{display:none;font-family:var(--zh);font-weight:400}
+body.show-zh .zh{display:block}
+.sub .zh{font-size:.9em;color:var(--text);margin-top:4px}
+.tape{position:absolute;height:44px;pointer-events:none;z-index:0;opacity:.95}
+.t-mint{background:repeating-linear-gradient(45deg,#8ED1C6 0 14px,#B8E3DB 14px 28px)}
+.t-pink{background:repeating-linear-gradient(45deg,#F3A6A0 0 14px,#F8CFCB 14px 28px)}
+.t-yel{background:repeating-linear-gradient(45deg,#F4BE3A 0 14px,#F9DC8E 14px 28px)}
+.deco{position:absolute;pointer-events:none;z-index:0}
+.deco svg{width:100%;height:auto;display:block}
+.bob{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -12px}}
+
+.card{background:var(--paper);border:4px solid var(--ink);border-radius:28px;box-shadow:7px 7px 0 var(--ink)}
+.clicky{cursor:pointer;transition:transform .12s, box-shadow .12s}
+.clicky:hover{transform:translateY(-4px)}
+.clicky:active{transform:translate(5px,5px);box-shadow:2px 2px 0 var(--ink)}
+.speak{background:var(--yellow);border:3px solid var(--ink);border-radius:50%;width:50px;height:50px;font-size:22px;box-shadow:3px 3px 0 var(--ink);flex:none;display:inline-flex;align-items:center;justify-content:center}
+.speak:active{transform:translate(3px,3px);box-shadow:none}
+.bigbtn{display:inline-block;font-size:30px;font-weight:700;color:var(--paper);background:var(--teal);border:4px solid var(--ink);border-radius:60px;padding:12px 40px;box-shadow:6px 6px 0 var(--ink);transition:.12s}
+.bigbtn:hover{transform:translateY(-3px)}
+.bigbtn:active{transform:translate(5px,5px);box-shadow:1px 1px 0 var(--ink)}
+.bigbtn.y{background:var(--yellow);color:var(--ink)}
+.bigbtn.p{background:var(--paper);color:var(--ink)}
+
+/* ---------- hero ---------- */
+#home{background:var(--cream)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:24px}
+.h1{font-family:var(--disp);font-weight:400;line-height:1.05;font-size:clamp(60px,10vw,128px);color:var(--yellow);-webkit-text-stroke:4px var(--ink);text-shadow:7px 7px 0 var(--ink);letter-spacing:2px}
+.h1zh{font-family:var(--zh);font-size:clamp(30px,4vw,44px);margin:6px 0 18px;color:var(--teal-d)}
+.letters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.letters button{width:56px;height:64px;border-radius:14px;border:4px solid var(--ink);background:var(--paper);font-family:var(--disp);font-size:34px;padding-top:6px;box-shadow:4px 4px 0 var(--ink);transition:.15s}
+.letters button:nth-child(3n+1){background:var(--pink)}
+.letters button:nth-child(3n+2){background:var(--mint)}
+.letters button:nth-child(3n){background:var(--yellow)}
+.letters button:hover,.letters button.pop{transform:translateY(-8px) rotate(-6deg)}
+.hero-art{position:relative;height:440px}
+.hero-art .who{position:absolute;bottom:0}
+.hero-art svg{width:100%;height:auto}
+.say-bub{position:absolute;background:var(--paper);border:4px solid var(--ink);border-radius:22px;padding:6px 18px;font-family:var(--disp);font-size:28px;box-shadow:4px 4px 0 var(--ink);padding-top:10px}
+
+/* ---------- kinds ---------- */
+#what{background:var(--mint-l)}
+.kinds{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kind{padding:20px 20px 24px;text-align:center;position:relative}
+.kind .art{height:190px;display:flex;justify-content:center;align-items:flex-end}
+.kind .art svg{height:190px;width:auto}
+.kind h3{font-family:var(--disp);font-weight:400;font-size:32px;margin-top:8px;letter-spacing:1px}
+.kind .hint{font-family:var(--zh);font-size:16px;opacity:.6;margin-top:4px}
+.kind .more{max-height:0;overflow:hidden;transition:max-height .4s}
+.kind.open .more{max-height:300px}
+.kind.open .hint{display:none}
+.kind ul{list-style:none;text-align:left;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.kind li{font-size:19px;font-weight:600;background:var(--paper);border:3px solid var(--ink);border-radius:16px;padding:6px 12px}
+.kind li .zh{font-size:16px;color:var(--teal-d)}
+.kind:nth-child(1){background:var(--yellow-l)}
+.kind:nth-child(2){background:var(--pink-l)}
+.kind:nth-child(3){background:var(--lav)}
+
+/* ---------- word cards ---------- */
+#words{background:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.wcard{perspective:1200px;height:270px;cursor:pointer}
+.wcard-in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+.wcard.flip .wcard-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:4px solid var(--ink);border-radius:24px;box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;text-align:center}
+.front .art{height:170px;display:flex;align-items:flex-end;justify-content:center;position:relative;width:100%}
+.front .art svg{height:165px;width:auto}
+.front .badge{position:absolute;top:-4px;right:-2px;width:54px;height:54px;border-radius:50%;background:var(--paper);border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;transform:rotate(10deg)}
+.front .badge svg{width:36px;height:36px}
+.word{font-family:var(--disp);font-size:26px;line-height:1.1;margin-top:8px;letter-spacing:1px;padding-top:4px}
+.back{background:var(--teal);color:var(--paper);transform:rotateY(180deg);gap:12px}
+.back .sent{font-size:26px;font-weight:700;line-height:1.2}
+.back .zh{color:var(--yellow-l);font-size:19px}
+.wcard:nth-child(5n+1) .front{background:var(--yellow-l)}
+.wcard:nth-child(5n+2) .front{background:var(--mint-l)}
+.wcard:nth-child(5n+3) .front{background:var(--pink-l)}
+.wcard:nth-child(5n+4) .front{background:var(--lav)}
+.wcard:nth-child(5n) .front{background:var(--paper)}
+
+/* ---------- game panel ---------- */
+#judge{background:var(--yellow-l)}
+#say{background:var(--pink-l)}
+#build{background:var(--mint-l)}
+.panel{background:var(--paper);border:5px solid var(--ink);border-radius:32px;box-shadow:9px 9px 0 var(--ink);padding:24px;max-width:920px;margin:0 auto;position:relative}
+.progress{display:flex;gap:6px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.progress i{width:30px;height:30px;border-radius:50%;border:3px solid var(--ink);background:var(--paper);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:14px;font-weight:700}
+.progress i.ok{background:var(--mint)}
+.progress i.no{background:var(--coral);color:var(--paper)}
+.progress i.now{background:var(--yellow);transform:scale(1.15)}
+.scene{display:flex;justify-content:center;align-items:flex-end;gap:10px;border-radius:24px;border:4px solid var(--ink);height:250px;position:relative;overflow:hidden;background:linear-gradient(var(--paper) 0 72%,var(--yellow-l) 72%);padding-bottom:6px}
+.scene .grass{position:absolute;left:0;right:0;top:72%;border-top:4px dashed var(--ink);opacity:.25}
+.scene .who{height:200px;position:relative;text-align:center}
+.scene .who svg{height:180px;width:auto;display:block;margin:0 auto}
+.scene .who b{display:inline-block;font-size:15px;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:0 10px;margin-top:-4px;position:relative}
+.scene .prop{position:absolute;top:14px;left:50%;transform:translateX(-50%) rotate(-6deg);width:82px;height:82px;border-radius:50%;background:var(--paper);border:4px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:flex;align-items:center;justify-content:center;animation:wig 2.4s ease-in-out infinite}
+.scene .prop svg{width:52px;height:52px}
+@keyframes wig{50%{transform:translateX(-50%) rotate(6deg)}}
+.qline{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px 0 4px;text-align:center}
+.qtext{font-size:clamp(23px,3vw,32px);font-weight:700;line-height:1.2;color:var(--ink)}
+.qzh{text-align:center;font-size:20px;color:var(--teal-d)}
+.choices{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.choice{min-width:230px;padding:12px 22px;border-radius:22px;border:4px solid var(--ink);font-weight:700;font-size:23px;box-shadow:5px 5px 0 var(--ink);transition:.12s;background:var(--paper)}
+.choice:hover{transform:translateY(-3px)}
+.choice.yes{background:var(--mint-l)}
+.choice.no{background:var(--pink-l)}
+.choice.right{background:var(--teal);color:var(--paper);animation:yay .5s}
+.choice.wrong{background:#D9D4CA;animation:shake .4s}
+.choice:disabled{cursor:default}
+@keyframes yay{30%{transform:scale(1.06) rotate(-1.5deg)}60%{transform:scale(.98)}}
+@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.feedback{min-height:60px;margin-top:16px;text-align:center;font-weight:700;font-size:22px}
+.feedback .zh{font-size:18px;color:var(--teal-d)}
+.better{display:inline-flex;align-items:center;gap:10px;background:var(--yellow-l);border:3px dashed var(--ink);border-radius:16px;padding:6px 14px;margin-top:8px}
+.better .speak{width:38px;height:38px;font-size:16px}
+.next-row{text-align:center;margin-top:10px}
+.done{text-align:center}
+.done svg{height:200px;width:auto}
+.done h3{font-family:var(--disp);font-weight:400;font-size:52px;color:var(--orange);-webkit-text-stroke:2px var(--ink);text-shadow:4px 4px 0 var(--ink);margin-top:6px}
+.stars{display:flex;gap:6px;justify-content:center;margin:6px 0}
+.stars svg{width:52px;height:52px}
+.stars .off{opacity:.25;filter:grayscale(1)}
+
+/* ---------- build ---------- */
+.answer-line{min-height:80px;border:4px dashed var(--ink);border-radius:20px;padding:10px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;background:var(--cream);margin:16px 0}
+.answer-line.good{border-style:solid;background:var(--mint-l)}
+.answer-line.bad{animation:shake .4s;background:var(--pink-l)}
+.answer-line .ph{opacity:.45;font-weight:600;font-family:var(--zh)}
+.bank{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;min-height:62px}
+.tile{padding:6px 20px;border-radius:16px;border:4px solid var(--ink);background:var(--yellow);font-weight:700;font-size:26px;box-shadow:4px 4px 0 var(--ink);transition:.12s}
+.tile:nth-child(3n+2){background:var(--mint)}
+.tile:nth-child(3n){background:var(--pink)}
+.tile:hover{transform:translateY(-3px) rotate(-2deg)}
+.answer-line .tile{background:var(--paper)}
+.build-tools{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.build-tools .bigbtn{font-size:22px;padding:8px 24px}
+.btop{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.btop .mini svg{height:120px;width:auto}
+
+/* ---------- footer ---------- */
+footer{background:var(--teal);color:var(--paper);text-align:center;padding:26px 16px 34px}
+footer .row{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap;gap:4px}
+footer svg{height:120px;width:auto}
+footer p{font-family:var(--disp);font-size:30px;margin-top:10px;letter-spacing:1px;color:var(--yellow);-webkit-text-stroke:1.5px var(--ink);text-shadow:3px 3px 0 var(--ink)}
+
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:80}
+
+@media (max-width:980px){.cards{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .letters{justify-content:center}
+  .hero-art{height:320px;max-width:420px;margin:0 auto;width:100%}
+  .kinds{grid-template-columns:1fr}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .wcard{height:240px}
+  .front .art svg{height:140px}
+  .scene{height:210px}
+  .scene .who svg{height:140px}
+  .scene .who{height:162px}
+  .choice{min-width:0;width:100%}
+  section{padding:40px 16px 56px}
+  nav .logo{width:100%}
+  .tape{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">HONESTY</div>
+  <a class="pill home zhf" href="index.html">🏠 品格教育</a>
+  <a class="pill" href="#home">Top</a>
+  <a class="pill" href="#what">What?</a>
+  <a class="pill" href="#words">Words</a>
+  <a class="pill" href="#judge">Yes or No?</a>
+  <a class="pill" href="#say">Say It</a>
+  <a class="pill" href="#build">Build It</a>
+  <button class="pill zh-toggle" id="zhBtn">中文提示</button>
+</nav>
+
+<!-- ============ HOME ============ -->
+<section id="home">
+  <div class="tape t-yel" style="left:-30px;top:40px;width:300px;transform:rotate(-8deg)"></div>
+  <div class="tape t-mint" style="right:-40px;bottom:70px;width:280px;transform:rotate(6deg)"></div>
+  <div class="deco bob" data-icon="star" style="right:6%;top:40px;width:70px"></div>
+  <div class="deco bob" data-icon="truth" style="left:4%;bottom:50px;width:64px;animation-delay:.8s"></div>
+  <div class="wrap hero">
+    <div>
+      <span class="tag zhf">一到三年級 品格課</span>
+      <h1 class="h1" style="margin-top:14px">HONESTY</h1>
+      <p class="h1zh">誠實，說真話</p>
+      <div class="letters" id="letters"></div>
+      <p class="zh" style="margin-top:12px;font-size:19px">點一點字母，跟著唸 H-O-N-E-S-T-Y！</p>
+      <div style="margin-top:28px"><a href="#what" class="bigbtn">Let's go! ▶</a></div>
+    </div>
+    <div class="hero-art" id="heroArt"></div>
+  </div>
+</section>
+
+<!-- ============ WHAT IS HONESTY ============ -->
+<section id="what">
+  <div class="tape t-pink" style="right:-30px;top:50px;width:260px;transform:rotate(8deg)"></div>
+  <div class="wrap">
+    <div class="center"><span class="tag" style="background:var(--yellow)">Part 1</span>
+    <h2 class="h2">What is honesty?</h2>
+    <p class="sub">Honesty means we tell the truth, say "I did it," and give things back.<span class="zh">誠實，就是說實話、做錯了會承認、不是自己的東西會還回去。</span></p></div>
+    <div class="kinds" id="kinds"></div>
+  </div>
+</section>
+
+<!-- ============ WORD CARDS ============ -->
+<section id="words">
+  <div class="tape t-yel" style="left:-30px;top:60px;width:260px;transform:rotate(-6deg)"></div>
+  <div class="wrap">
+    <div class="center"><span class="tag" style="background:var(--pink)">Part 2</span>
+    <h2 class="h2">Honesty Words</h2>
+    <p class="sub">Tap a card to flip it!<span class="zh">點卡片翻面，聽聽看怎麼說。</span></p></div>
+    <div class="cards" id="cards"></div>
+    <div class="center" style="margin-top:30px"><button class="bigbtn y" id="flipAll">🔄 Flip all</button></div>
+  </div>
+</section>
+
+<!-- ============ JUDGE ============ -->
+<section id="judge">
+  <div class="tape t-mint" style="right:-30px;top:44px;width:260px;transform:rotate(7deg)"></div>
+  <div class="wrap">
+    <div class="center"><span class="tag">Game 1</span>
+    <h2 class="h2">Honest or not?</h2>
+    <p class="sub">Look and listen. Is it honest?<span class="zh">看一看、聽一聽：這樣誠實嗎？</span></p></div>
+    <div class="panel" id="judgePanel"></div>
+  </div>
+</section>
+
+<!-- ============ SAY IT ============ -->
+<section id="say">
+  <div class="tape t-yel" style="left:-30px;top:50px;width:260px;transform:rotate(-7deg)"></div>
+  <div class="wrap">
+    <div class="center"><span class="tag" style="background:var(--yellow)">Game 2</span>
+    <h2 class="h2">What do you say?</h2>
+    <p class="sub">Pick the honest words.<span class="zh">選出誠實的說法。</span></p></div>
+    <div class="panel" id="sayPanel"></div>
+  </div>
+</section>
+
+<!-- ============ BUILD IT ============ -->
+<section id="build">
+  <div class="tape t-pink" style="right:-30px;top:50px;width:260px;transform:rotate(6deg)"></div>
+  <div class="wrap">
+    <div class="center"><span class="tag" style="background:var(--pink)">Game 3</span>
+    <h2 class="h2">Build the sentence!</h2>
+    <p class="sub">Listen, then tap the words in order.<span class="zh">先聽一聽，再依照順序點單字。</span></p></div>
+    <div class="panel" id="buildPanel"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="row" id="footKids"></div>
+  <p>I tell the truth every day!</p>
+</footer>
+
+<canvas id="confetti"></canvas>
+
+<script>
+/* =========================================================
+   貼紙小人：文具角色（跟 Respect 同一套）
+   ========================================================= */
+const INK='#2A2A2A', C={paper:'#FFFDF7',teal:'#1F7F86',tealD:'#17666B',mint:'#8ED1C6',mintD:'#6FC0B4',yellow:'#F4BE3A',yellowD:'#E2A62C',orange:'#EE7D2B',orangeD:'#C9631C',pink:'#F3A6A0',pinkD:'#E68982',coral:'#EF6F61',wood:'#F6D9A8',lav:'#B9B0E3',lavD:'#9A8FD6',red:'#EF6F61'};
+const SW=`stroke="${INK}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"`;
+
+function starPts(cx,cy,R,r){let p=[];for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r:R;p.push((cx+rr*Math.cos(a)).toFixed(1)+','+(cy+rr*Math.sin(a)).toFixed(1));}return p.join(' ');}
+
+const BODY={
+  heart:{fy:100,arm:[[40,118],[160,118]],
+    svg:c=>`<path d="M100 186 C45 148 22 118 22 82 C22 53 43 34 68 34 C86 34 95 46 100 60 C105 46 114 34 132 34 C157 34 178 53 178 82 C178 118 155 148 100 186Z" fill="${c||C.pink}" ${SW}/>`},
+  star:{fy:118,arm:[[42,112],[158,112]],
+    svg:c=>`<polygon points="${starPts(100,112,90,42)}" fill="${c||C.yellow}" ${SW}/>`},
+  book:{fy:126,fx:110,arm:[[40,130],[160,130]],
+    svg:c=>`<rect x="40" y="26" width="120" height="160" rx="16" fill="${c||C.teal}" ${SW}/><rect x="40" y="26" width="28" height="160" rx="12" fill="${C.tealD}" ${SW}/><rect x="80" y="44" width="64" height="30" rx="7" fill="${C.paper}" stroke="${INK}" stroke-width="5"/><line x1="90" y1="59" x2="134" y2="59" stroke="${C.mint}" stroke-width="5" stroke-linecap="round"/>`},
+  pencil:{fy:116,arm:[[70,126],[130,126]],
+    svg:c=>`<path d="M70 62 L100 10 L130 62Z" fill="${C.wood}" ${SW}/><path d="M91 26 L100 10 L109 26Z" fill="${INK}"/><rect x="70" y="62" width="60" height="100" fill="${c||C.yellow}" ${SW}/><line x1="90" y1="66" x2="90" y2="158" stroke="${C.yellowD}" stroke-width="4"/><rect x="66" y="160" width="68" height="13" rx="3" fill="${C.mint}" ${SW}/><rect x="68" y="172" width="64" height="16" rx="7" fill="${C.pink}" ${SW}/>`},
+  crayon:{fy:120,arm:[[66,126],[134,126]],
+    svg:c=>`<path d="M72 46 Q100 -2 128 46Z" fill="${c||C.orange}" ${SW}/><rect x="66" y="46" width="68" height="140" rx="10" fill="${c||C.orange}" ${SW}/><rect x="66" y="82" width="68" height="74" fill="${C.paper}" ${SW}/><path d="M66 94 H134 M66 144 H134" stroke="${c||C.orange}" stroke-width="5"/>`},
+  eraser:{fy:112,arm:[[34,128],[166,128]],
+    svg:c=>`<rect x="34" y="62" width="132" height="124" rx="26" fill="${c||C.pink}" ${SW}/><path d="M34 140 H166 V160 Q166 186 140 186 H60 Q34 186 34 160Z" fill="${C.mint}" ${SW}/><path d="M60 150 H140" stroke="${C.paper}" stroke-width="4" stroke-linecap="round" opacity=".8"/>`},
+  ball:{fy:108,arm:[[24,116],[176,116]],
+    svg:c=>`<circle cx="100" cy="106" r="80" fill="${c||C.mint}" ${SW}/><path d="M30 70 Q100 100 170 70" fill="none" stroke="${C.paper}" stroke-width="7" opacity=".9"/><path d="M28 148 Q100 118 172 148" fill="none" stroke="${C.paper}" stroke-width="7" opacity=".9"/>`},
+  cloud:{fy:118,arm:[[24,130],[176,130]],
+    svg:c=>`<path d="M52 180 Q18 180 20 146 Q22 116 52 114 Q50 70 92 64 Q120 34 152 62 Q182 70 178 108 Q190 146 162 180Z" fill="${c||C.paper}" ${SW}/>`},
+  notebook:{fy:126,fx:108,arm:[[36,130],[164,130]],
+    svg:c=>`<rect x="36" y="28" width="128" height="158" rx="16" fill="${c||C.lav}" ${SW}/>${[52,80,108,136,164].map(y=>`<circle cx="52" cy="${y}" r="6" fill="${C.paper}" stroke="${INK}" stroke-width="4"/>`).join('')}<rect x="78" y="46" width="68" height="28" rx="7" fill="${C.paper}" stroke="${INK}" stroke-width="5"/>`},
+  apple:{fy:116,arm:[[26,120],[174,120]],
+    svg:c=>`<path d="M100 54 Q102 30 112 20" fill="none" ${SW}/><path d="M106 34 Q132 14 150 30 Q130 48 106 34Z" fill="${C.mint}" ${SW}/><path d="M100 60 Q70 40 44 56 Q16 76 22 118 Q30 168 66 184 Q84 190 100 180 Q116 190 134 184 Q170 168 178 118 Q184 76 156 56 Q130 40 100 60Z" fill="${c||C.red}" ${SW}/>`}
+};
+
+function face(cx,fy,mood){
+  const eyes=`<ellipse cx="${cx-19}" cy="${fy}" rx="7" ry="10" fill="${INK}"/><ellipse cx="${cx+19}" cy="${fy}" rx="7" ry="10" fill="${INK}"/><circle cx="${cx-17}" cy="${fy-4}" r="2.5" fill="#fff"/><circle cx="${cx+21}" cy="${fy-4}" r="2.5" fill="#fff"/>`;
+  const cheeks=`<ellipse cx="${cx-34}" cy="${fy+17}" rx="10" ry="6" fill="${C.coral}" opacity=".85"/><ellipse cx="${cx+34}" cy="${fy+17}" rx="10" ry="6" fill="${C.coral}" opacity=".85"/>`;
+  const L=`fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round"`;
+  const m={
+    happy:`${eyes}${cheeks}<path d="M${cx-12} ${fy+15} Q${cx} ${fy+28} ${cx+12} ${fy+15}" ${L}/>`,
+    open:`${eyes}${cheeks}<path d="M${cx-13} ${fy+13} H${cx+13} Q${cx+12} ${fy+32} ${cx} ${fy+32} Q${cx-12} ${fy+32} ${cx-13} ${fy+13}Z" fill="${C.coral}" stroke="${INK}" stroke-width="4"/>`,
+    calm:`${eyes}${cheeks}<path d="M${cx-8} ${fy+18} Q${cx} ${fy+24} ${cx+8} ${fy+18}" ${L}/>`,
+    sad:`${eyes}<path d="M${cx-30} ${fy-12} L${cx-14} ${fy-20}" ${L}/><path d="M${cx+30} ${fy-12} L${cx+14} ${fy-20}" ${L}/><path d="M${cx-11} ${fy+25} Q${cx} ${fy+15} ${cx+11} ${fy+25}" ${L}/><path d="M${cx-30} ${fy+10} Q${cx-34} ${fy+22} ${cx-29} ${fy+27}" fill="none" stroke="#6FA3E8" stroke-width="5" stroke-linecap="round"/>`,
+    mad:`${eyes}<path d="M${cx-30} ${fy-20} L${cx-12} ${fy-12}" ${L}/><path d="M${cx+30} ${fy-20} L${cx+12} ${fy-12}" ${L}/><path d="M${cx-10} ${fy+22} Q${cx} ${fy+16} ${cx+10} ${fy+22}" ${L}/>`,
+    oops:`${eyes}${cheeks}<ellipse cx="${cx}" cy="${fy+21}" rx="7" ry="8" fill="${C.coral}" stroke="${INK}" stroke-width="4"/>`
+  };
+  return m[mood]||m.happy;
+}
+
+function arms(b,pose){
+  const [[lx,ly],[rx,ry]]=b.arm;
+  const T={
+    down:[[lx-20,ly+42],[rx+20,ry+42]],
+    wave:[[lx-20,ly+42],[rx+28,ry-52]],
+    cheer:[[lx-30,ly-56],[rx+30,ry-56]],
+    hold:[[lx+20,ly+26],[rx-20,ry+26]],
+    hip:[[lx-26,ly+22],[rx+26,ry+22]],
+    point:[[lx-20,ly+42],[rx+44,ry-6]]
+  }[pose]||[[lx-20,ly+42],[rx+20,ry+42]];
+  const a=(x1,y1,[x2,y2],bend)=>{const mx=(x1+x2)/2+bend,my=(y1+y2)/2;return `<path d="M${x1} ${y1} Q${mx} ${my} ${x2} ${y2}" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><circle cx="${x2}" cy="${y2}" r="9" fill="${C.paper}" stroke="${INK}" stroke-width="4.5"/>`;};
+  return a(lx,ly,T[0],-8)+a(rx,ry,T[1],8);
+}
+
+function sticker(type,o={}){
+  const b=BODY[type], cx=b.fx||100, pose=o.pose||'down', legs=o.legs!==false, mood=o.mood||'happy';
+  const legSvg=legs?`<path d="M82 182 L80 216 M118 182 L120 216" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><ellipse cx="74" cy="221" rx="15" ry="9" fill="${INK}"/><ellipse cx="126" cy="221" rx="15" ry="9" fill="${INK}"/>`:'';
+  const flip=o.flip?'transform="translate(200,0) scale(-1,1)"':'';
+  const A=arms(b,pose),front=pose==='hold';
+  return `<svg viewBox="-20 -10 240 245" xmlns="http://www.w3.org/2000/svg"><g ${flip}>${legSvg}${front?'':A}${b.svg(o.color)}${front?A:''}</g>${face(o.flip?200-cx:cx,b.fy,mood)}</svg>`;
+}
+
+/* 小圖示（道具） */
+const S5=`stroke="${INK}" stroke-width="5" stroke-linejoin="round"`;
+const ICON={
+  heart:`<svg viewBox="0 0 100 100"><path d="M50 88 C20 66 8 50 8 32 C8 18 19 9 32 9 C41 9 47 15 50 22 C53 15 59 9 68 9 C81 9 92 18 92 32 C92 50 80 66 50 88Z" fill="${C.pink}" ${S5}/></svg>`,
+  star:`<svg viewBox="0 0 100 100"><polygon points="${starPts(50,54,44,20)}" fill="${C.yellow}" ${S5}/></svg>`,
+  pencil:`<svg viewBox="0 0 100 100"><g transform="rotate(40 50 50)"><path d="M38 22 L50 2 L62 22Z" fill="${C.wood}" ${S5}/><rect x="38" y="22" width="24" height="58" fill="${C.yellow}" stroke="${INK}" stroke-width="5"/><rect x="38" y="80" width="24" height="14" rx="5" fill="${C.pink}" stroke="${INK}" stroke-width="5"/></g></svg>`,
+  crayon:`<svg viewBox="0 0 100 100">${[[22,C.orange],[42,C.mint],[62,C.pink]].map(([x,c])=>`<path d="M${x} 30 Q${x+8} 6 ${x+16} 30Z" fill="${c}" stroke="${INK}" stroke-width="4.5" stroke-linejoin="round"/><rect x="${x}" y="30" width="16" height="60" rx="3" fill="${c}" stroke="${INK}" stroke-width="4.5"/><rect x="${x}" y="48" width="16" height="22" fill="${C.paper}" stroke="${INK}" stroke-width="4"/>`).join('')}</svg>`,
+  brokenCrayon:`<svg viewBox="0 0 100 100"><g transform="rotate(-20 30 60)"><path d="M14 40 Q22 16 30 40Z" fill="${C.orange}" stroke="${INK}" stroke-width="4.5" stroke-linejoin="round"/><path d="M14 40 H30 V70 L24 64 L18 72 L14 66Z" fill="${C.orange}" stroke="${INK}" stroke-width="4.5" stroke-linejoin="round"/></g><g transform="rotate(25 70 60)"><path d="M60 44 L64 52 L70 46 L76 52 V86 H60Z" fill="${C.orange}" stroke="${INK}" stroke-width="4.5" stroke-linejoin="round"/><rect x="60" y="60" width="16" height="14" fill="${C.paper}" stroke="${INK}" stroke-width="4"/></g></svg>`,
+  eraser:`<svg viewBox="0 0 100 100"><rect x="12" y="28" width="76" height="48" rx="12" fill="${C.pink}" stroke="${INK}" stroke-width="5"/><path d="M50 28 H76 Q88 28 88 40 V64 Q88 76 76 76 H50Z" fill="${C.mint}" stroke="${INK}" stroke-width="5"/></svg>`,
+  ball:`<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="${C.mint}" stroke="${INK}" stroke-width="5"/><path d="M14 36 Q50 52 86 36 M14 64 Q50 48 86 64" fill="none" stroke="${C.paper}" stroke-width="5"/></svg>`,
+  bandage:`<svg viewBox="0 0 100 100"><g transform="rotate(-35 50 50)"><rect x="6" y="34" width="88" height="32" rx="16" fill="${C.wood}" stroke="${INK}" stroke-width="5"/><rect x="34" y="34" width="32" height="32" fill="${C.paper}" stroke="${INK}" stroke-width="5"/><circle cx="44" cy="44" r="2.5" fill="${INK}"/><circle cx="56" cy="44" r="2.5" fill="${INK}"/><circle cx="44" cy="56" r="2.5" fill="${INK}"/><circle cx="56" cy="56" r="2.5" fill="${INK}"/></g></svg>`,
+  hands:`<svg viewBox="0 0 100 100"><path d="M10 60 Q30 40 50 50 Q70 40 90 60 Q70 76 50 66 Q30 76 10 60Z" fill="${C.wood}" ${S5}/><path d="M38 56 Q50 62 62 56" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/><path d="M50 30 C42 22 30 28 38 38 L50 46 L62 38 C70 28 58 22 50 30Z" fill="${C.pink}" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/></svg>`,
+  /* 說實話：對話框 + 打勾 */
+  truth:`<svg viewBox="0 0 100 100"><path d="M18 18 H82 Q92 18 92 28 V60 Q92 70 82 70 H44 L26 88 L30 70 H18 Q8 70 8 60 V28 Q8 18 18 18Z" fill="${C.mint}" ${S5}/><path d="M32 44 L45 56 L68 32" fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  /* 說謊：對話框 + 叉叉 */
+  lie:`<svg viewBox="0 0 100 100"><path d="M18 18 H82 Q92 18 92 28 V60 Q92 70 82 70 H44 L26 88 L30 70 H18 Q8 70 8 60 V28 Q8 18 18 18Z" fill="${C.pink}" ${S5}/><path d="M38 32 L62 56 M62 32 L38 56" fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round"/></svg>`,
+  /* 破掉的杯子 */
+  cup:`<svg viewBox="0 0 100 100"><path d="M74 40 Q92 40 92 54 Q92 68 72 68" fill="none" stroke="${INK}" stroke-width="6" stroke-linecap="round"/><path d="M18 26 H78 L72 84 Q71 92 62 92 H34 Q25 92 24 84Z" fill="${C.mint}" ${S5}/><path d="M46 26 L54 44 L42 58 L56 74 L50 92" fill="none" stroke="${INK}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M80 12 L74 20 M92 20 L82 24 M66 8 L68 18" stroke="${INK}" stroke-width="4.5" stroke-linecap="round"/></svg>`,
+  /* 硬幣 */
+  coin:`<svg viewBox="0 0 100 100"><circle cx="50" cy="52" r="38" fill="${C.yellow}" stroke="${INK}" stroke-width="5"/><circle cx="50" cy="52" r="26" fill="none" stroke="${C.yellowD}" stroke-width="5"/><polygon points="${starPts(50,53,15,7)}" fill="${C.paper}" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"/></svg>`,
+  /* 被咬一口的餅乾 */
+  cookie:`<svg viewBox="0 0 100 100"><path d="M78 22 A40 40 0 1 0 88 56 Q76 60 72 50 Q62 48 64 36 Q74 34 78 22Z" fill="${C.wood}" ${S5}/>${[[34,36],[52,30],[30,60],[50,54],[44,76],[66,70]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="5" fill="#8A5A3B"/>`).join('')}</svg>`,
+  /* 作業紙 */
+  paper:`<svg viewBox="0 0 100 100"><path d="M22 8 H64 L80 24 V92 H22Z" fill="${C.paper}" ${S5}/><path d="M64 8 V24 H80" fill="${C.lav}" ${S5}/><path d="M32 40 H70 M32 54 H70 M32 68 H58" stroke="${C.teal}" stroke-width="5" stroke-linecap="round"/><path d="M60 78 L68 86 L84 66" fill="none" stroke="${C.coral}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  /* 膠水（修好它） */
+  glue:`<svg viewBox="0 0 100 100"><path d="M44 6 H56 L58 22 H42Z" fill="${C.orange}" ${S5}/><rect x="36" y="20" width="28" height="12" rx="4" fill="${C.orange}" stroke="${INK}" stroke-width="5"/><rect x="26" y="32" width="48" height="60" rx="12" fill="${C.paper}" stroke="${INK}" stroke-width="5"/><rect x="26" y="50" width="48" height="24" fill="${C.mint}" stroke="${INK}" stroke-width="5"/><path d="M50 56 C46 52 40 54 43 60 L50 66 L57 60 C60 54 54 52 50 56Z" fill="${C.pink}" stroke="${INK}" stroke-width="3"/></svg>`,
+  /* 書包 */
+  bag:`<svg viewBox="0 0 100 100"><path d="M36 26 Q36 10 50 10 Q64 10 64 26" fill="none" stroke="${INK}" stroke-width="6"/><rect x="18" y="24" width="64" height="68" rx="16" fill="${C.coral}" stroke="${INK}" stroke-width="5"/><rect x="30" y="54" width="40" height="26" rx="8" fill="${C.yellow}" stroke="${INK}" stroke-width="5"/><path d="M18 46 H82" stroke="${INK}" stroke-width="5"/></svg>`
+};
+
+const CAST={
+  Amy:['heart'], Tom:['book'], Mia:['star'], Leo:['crayon'], Kim:['eraser'],
+  Ben:['pencil'], Ann:['notebook'], Joy:['ball'], Sam:['cloud'], Zoe:['ball',C.yellow],
+  Teacher:['apple']
+};
+const kid=(name,o={})=>sticker(CAST[name][0],Object.assign({color:CAST[name][1]},o));
+
+/* =========================================================
+   聲音
+   ========================================================= */
+let vce=null;
+function pickVoice(){const vs=speechSynthesis.getVoices();vce=vs.find(v=>/en-US/i.test(v.lang)&&/female|samantha|google us/i.test(v.name))||vs.find(v=>/en-US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null;}
+if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
+function say(t){if(!('speechSynthesis' in window)||!t)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;u.pitch=1.1;if(vce)u.voice=vce;speechSynthesis.speak(u);}
+let actx=null;
+function tone(ms,len=.11,type='triangle'){try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();const t0=actx.currentTime+.01;ms.forEach((m,k)=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=440*Math.pow(2,(m-69)/12);const t=t0+k*len;g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.18,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+len*1.1);o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+len*1.2);});}catch(e){}}
+const ding=()=>tone([76,81,86]);
+const boop=()=>tone([55,50],.16,'square');
+const pop=()=>tone([84],.08,'sine');
+const fanfare=()=>tone([72,76,79,84,79,84],.13);
+
+/* 彩帶 */
+const cv=document.getElementById('confetti'),cx2=cv.getContext('2d');let bits=[],raf=null;
+function sizeCv(){cv.width=innerWidth;cv.height=innerHeight;}sizeCv();addEventListener('resize',sizeCv);
+function burst(n=60,x=innerWidth/2,y=innerHeight*.45){const cols=['#F4BE3A','#8ED1C6','#F3A6A0','#EE7D2B','#1F7F86','#FFFDF7'];for(let k=0;k<n;k++)bits.push({x:x+(Math.random()-.5)*160,y,vx:(Math.random()-.5)*16,vy:-Math.random()*15-4,r:Math.random()*9+6,c:cols[k%cols.length],a:Math.random()*6,life:120});if(!raf)loop();}
+function loop(){cx2.clearRect(0,0,cv.width,cv.height);bits.forEach(b=>{b.vy+=.42;b.x+=b.vx;b.y+=b.vy;b.a+=.2;b.life--;cx2.save();cx2.translate(b.x,b.y);cx2.rotate(b.a);cx2.fillStyle=b.c;cx2.fillRect(-b.r/2,-b.r/4,b.r,b.r/2);cx2.restore();});bits=bits.filter(b=>b.life>0&&b.y<innerHeight+40);raf=bits.length?requestAnimationFrame(loop):(cx2.clearRect(0,0,cv.width,cv.height),null);}
+const burstAt=el=>{const r=el.getBoundingClientRect();burst(40,r.left+r.width/2,r.top+r.height/2);};
+
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+document.getElementById('zhBtn').onclick=()=>document.body.classList.toggle('show-zh');
+document.querySelectorAll('[data-icon]').forEach(el=>el.innerHTML=ICON[el.dataset.icon]);
+
+/* =========================================================
+   HOME
+   ========================================================= */
+document.getElementById('heroArt').innerHTML=`
+  <div class="who bob" style="left:2%;width:46%">${kid('Tom',{pose:'wave',mood:'calm'})}</div>
+  <div class="who bob" style="left:40%;width:48%;animation-delay:.6s">${kid('Mia',{pose:'cheer',mood:'open',flip:1})}</div>
+  <div class="say-bub" style="left:6%;top:4%;transform:rotate(-6deg)">I did it.</div>
+  <div class="say-bub" style="right:0;top:10%;transform:rotate(7deg);background:var(--yellow)">The truth!</div>`;
+const lettersEl=document.getElementById('letters');
+'HONESTY'.split('').forEach(c=>{const b=document.createElement('button');b.textContent=c;b.onclick=()=>{say(c);pop();b.classList.add('pop');setTimeout(()=>b.classList.remove('pop'),300);};lettersEl.appendChild(b);});
+const spell=document.createElement('button');spell.className='speak';spell.style.marginLeft='6px';spell.textContent='🔊';spell.onclick=()=>say('H. O. N. E. S. T. Y. Honesty!');lettersEl.appendChild(spell);
+
+/* =========================================================
+   WHAT IS HONESTY
+   ========================================================= */
+const kinds=[
+  {t:'Tell the truth',zh:'說實話',art:kid('Amy',{pose:'wave'}),items:['I tell the truth.','I say what I saw.','I do not tell lies.'],izh:['我說實話。','看到什麼就說什麼。','我不說謊。']},
+  {t:'Say "I did it."',zh:'做錯了會承認',art:kid('Tom',{pose:'hold',mood:'oops'}),items:['I say, "I did it."','I say, "I\'m sorry."','I fix it.'],izh:['我說「是我做的」。','我說「對不起」。','我會把它修好。']},
+  {t:'Give it back',zh:'不是我的，就還回去',art:kid('Leo',{pose:'hold'}),items:['I give it back.','I ask, "Is this yours?"','I do my own work.'],izh:['我會還回去。','我會問「這是你的嗎？」','自己的作業自己做。']}
+];
+const kindsEl=document.getElementById('kinds');
+kinds.forEach(k=>{
+  const d=document.createElement('div');d.className='kind card clicky';
+  d.innerHTML=`<div class="art">${k.art}</div><h3>${k.t}</h3><div class="zh">${k.zh}</div><div class="hint">點一點 Tap</div>
+    <div class="more"><ul>${k.items.map((x,i)=>`<li>✔ ${x}<span class="zh">${k.izh[i]}</span></li>`).join('')}</ul></div>`;
+  d.onclick=()=>{d.classList.toggle('open');if(d.classList.contains('open')){pop();say(k.t+' '+k.items.join(' '));}};
+  kindsEl.appendChild(d);
+});
+
+/* =========================================================
+   WORD CARDS
+   ========================================================= */
+const words=[
+  {w:'honest',s:'I am honest.',zh:'誠實的',k:'Mia',pose:'cheer',mood:'open',i:'star'},
+  {w:'the truth',s:'I tell the truth.',zh:'實話',k:'Amy',pose:'wave',i:'truth'},
+  {w:'a lie',s:'Do not tell a lie.',zh:'謊話',k:'Sam',pose:'hip',mood:'mad',i:'lie'},
+  {w:'I did it.',s:'I did it. I broke it.',zh:'是我做的',k:'Tom',pose:'down',mood:'oops',i:'cup'},
+  {w:'a mistake',s:'It was a mistake.',zh:'錯誤、不小心的',k:'Kim',pose:'down',mood:'oops',i:'eraser'},
+  {w:"I'm sorry",s:"I'm sorry.",zh:'對不起',k:'Ben',pose:'down',mood:'sad',i:'bandage'},
+  {w:'fix it',s:'I can fix it.',zh:'把它修好、改正',k:'Leo',pose:'hold',i:'glue'},
+  {w:'give it back',s:'I give it back.',zh:'還回去',k:'Joy',pose:'hold',i:'coin'},
+  {w:'Is this yours?',s:'Is this yours?',zh:'這是你的嗎？',k:'Zoe',pose:'point',mood:'calm',i:'pencil'},
+  {w:'my own work',s:'I do my own work.',zh:'自己的作業自己做',k:'Ann',pose:'hold',i:'paper'}
+];
+const cardsEl=document.getElementById('cards');
+words.forEach(x=>{
+  const c=document.createElement('div');c.className='wcard';
+  c.innerHTML=`<div class="wcard-in">
+    <div class="face front"><div class="art">${kid(x.k,{pose:x.pose,mood:x.mood||'happy'})}<div class="badge">${ICON[x.i]}</div></div><div class="word">${x.w}</div></div>
+    <div class="face back"><div class="sent">${x.s}</div><div class="zh">${x.zh}</div><button class="speak" aria-label="listen">🔊</button></div></div>`;
+  c.onclick=e=>{if(e.target.closest('.speak')){e.stopPropagation();say(x.s);return;}c.classList.toggle('flip');pop();say(c.classList.contains('flip')?x.s:x.w);};
+  cardsEl.appendChild(c);
+});
+let allFlipped=false;
+document.getElementById('flipAll').onclick=()=>{allFlipped=!allFlipped;document.querySelectorAll('.wcard').forEach((c,i)=>setTimeout(()=>c.classList.toggle('flip',allFlipped),i*60));};
+
+/* =========================================================
+   共用：一題一題的遊戲
+   ========================================================= */
+function starsHTML(n){return `<div class="stars">${[0,1,2].map(i=>`<span class="${i<n?'':'off'}">${ICON.star}</span>`).join('')}</div>`;}
+function makeQuiz(panelId,qs,render,endKid){
+  const panel=document.getElementById(panelId);let order,idx,res;
+  function start(){order=shuffle(qs);idx=0;res=[];show();}
+  function prog(){return `<div class="progress">${order.map((_,i)=>`<i class="${i<res.length?(res[i]?'ok':'no'):(i===idx?'now':'')}">${i+1}</i>`).join('')}</div>`;}
+  function show(){
+    if(idx>=order.length)return finish();
+    panel.innerHTML=prog();
+    render(panel,order[idx],ok=>{res.push(ok);panel.querySelector('.progress').outerHTML=prog();
+      const nr=document.createElement('div');nr.className='next-row';nr.innerHTML=`<button class="bigbtn">${idx===order.length-1?'Finish ★':'Next ▶'}</button>`;
+      nr.querySelector('button').onclick=()=>{idx++;show();};panel.appendChild(nr);});
+  }
+  function finish(){
+    const s=res.filter(Boolean).length,n=order.length,r=s/n,st=r===1?3:r>=.7?2:r>=.4?1:0;
+    const msg=r===1?'Perfect!':r>=.7?'Great job!':'Good try!';
+    panel.innerHTML=`<div class="done">${kid(endKid,{pose:'cheer',mood:'open'})}<h3>${msg}</h3>${starsHTML(st)}
+      <p style="font-size:24px;font-weight:700;margin:6px 0 18px">${s} / ${n}</p><button class="bigbtn y">🔁 Play again</button></div>`;
+    panel.querySelector('button').onclick=start;
+    if(r>=.7){fanfare();burst(110);}say(msg);
+  }
+  start();
+}
+const who=(name,o)=>`<div class="who">${kid(name,o)}<b>${name}</b></div>`;
+const sceneHTML=q=>`<div class="scene"><div class="grass"></div>${who(q.L[0],q.L[1])}${who(q.R[0],Object.assign({flip:1},q.R[1]))}<div class="prop">${ICON[q.p]}</div></div>`;
+
+/* =========================================================
+   GAME 1：HONEST OR NOT
+   ========================================================= */
+const judgeQs=[
+  {t:'Tom breaks a cup. He says, "I did it."',zh:'Tom 打破杯子，他說「是我做的。」',a:true,L:['Tom',{pose:'hold',mood:'oops'}],R:['Teacher',{mood:'calm'}],p:'cup'},
+  {t:'Ben finds a coin. He keeps it.',zh:'Ben 撿到一枚硬幣，自己留下來。',a:false,better:'Give it to the teacher.',bzh:'交給老師。',L:['Ben',{pose:'hold',mood:'open'}],R:['Joy',{pose:'hip',mood:'sad'}],p:'coin'},
+  {t:'Mia eats the cookie. She says, "Not me!"',zh:'Mia 吃了餅乾，卻說「不是我！」',a:false,better:'I ate it. I\'m sorry.',bzh:'是我吃的，對不起。',L:['Mia',{pose:'hip',mood:'oops'}],R:['Amy',{mood:'sad'}],p:'cookie'},
+  {t:'Leo finds a pencil. He asks, "Is this yours?"',zh:'Leo 撿到一枝鉛筆，問「這是你的嗎？」',a:true,L:['Leo',{pose:'hold'}],R:['Kim',{pose:'cheer',mood:'open'}],p:'pencil'},
+  {t:"Kim copies Ann's work.",zh:'Kim 抄 Ann 的作業。',a:false,better:'Do your own work.',bzh:'自己的作業自己做。',L:['Kim',{pose:'point',mood:'oops'}],R:['Ann',{pose:'hip',mood:'mad'}],p:'paper'},
+  {t:'Sam breaks a crayon. He hides it.',zh:'Sam 弄斷蠟筆，把它藏起來。',a:false,better:"I'm sorry. I broke it.",bzh:'對不起，是我弄斷的。',L:['Sam',{pose:'hold',mood:'oops'}],R:['Zoe',{mood:'sad'}],p:'brokenCrayon'},
+  {t:'Zoe makes a mistake. She says, "I can fix it."',zh:'Zoe 做錯了，她說「我可以改好。」',a:true,L:['Zoe',{pose:'hold',mood:'calm'}],R:['Teacher',{pose:'wave'}],p:'eraser'},
+  {t:'Joy did not do her homework. She says, "My dog ate it!"',zh:'Joy 沒寫作業，卻說「我的狗把它吃掉了！」',a:false,better:"I did not do it. I'm sorry.",bzh:'我沒有寫，對不起。',L:['Joy',{pose:'point',mood:'open'}],R:['Teacher',{pose:'hip',mood:'sad'}],p:'paper'},
+  {t:'Amy tells the teacher what she saw.',zh:'Amy 把看到的事照實告訴老師。',a:true,L:['Amy',{pose:'point'}],R:['Teacher',{mood:'calm'}],p:'truth'},
+  {t:'Ann takes a ball home. It is not her ball.',zh:'Ann 把不是自己的球帶回家。',a:false,better:'Give it back.',bzh:'把它還回去。',L:['Ann',{pose:'hold',mood:'oops'}],R:['Ben',{pose:'hip',mood:'sad'}],p:'ball'}
+];
+makeQuiz('judgePanel',judgeQs,(panel,q,done)=>{
+  const box=document.createElement('div');
+  box.innerHTML=`${sceneHTML(q)}
+    <div class="qline"><div class="qtext">${q.t}</div><button class="speak">🔊</button></div><div class="qzh zh">${q.zh}</div>
+    <div class="choices"><button class="choice yes" data-v="1">👍 Honest</button><button class="choice no" data-v="0">👎 Not honest</button></div>
+    <div class="feedback"></div>`;
+  panel.appendChild(box);
+  box.querySelector('.speak').onclick=()=>say(q.t);setTimeout(()=>say(q.t),250);
+  box.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{
+    const ok=(b.dataset.v==='1')===q.a;
+    box.querySelectorAll('.choice').forEach(x=>{x.disabled=true;if((x.dataset.v==='1')===q.a)x.classList.add('right');});
+    if(!ok)b.classList.add('wrong');
+    const fb=box.querySelector('.feedback');
+    if(q.a){fb.innerHTML=`${ok?'Yes!':'Oops!'} It is honest.<span class="zh">這樣是誠實喔！</span>`;}
+    else{fb.innerHTML=`${ok?'Right!':'Oops!'} It is not honest.<br><span class="better">Better: <b>${q.better}</b><button class="speak">🔊</button></span><span class="zh">更好的做法：${q.bzh}</span>`;fb.querySelector('.speak').onclick=()=>say(q.better);}
+    ok?(ding(),burstAt(b)):boop();
+    setTimeout(()=>say(q.a?'It is honest.':'Not honest. Better: '+q.better),350);
+    done(ok);
+  });
+},'Mia');
+
+/* =========================================================
+   GAME 2：WHAT DO YOU SAY?
+   ========================================================= */
+const sayQs=[
+  {t:"You break your friend's crayon.",zh:'你弄斷了朋友的蠟筆。',a:"I'm sorry. I broke it.",o:['Not me!','Leo did it!'],L:['Ben',{pose:'hold',mood:'oops'}],R:['Kim',{mood:'sad'}],p:'brokenCrayon'},
+  {t:"You find your friend's eraser.",zh:'你撿到朋友的橡皮擦。',a:'Is this yours?',o:["It's mine now.",'Go away.'],L:['Zoe',{pose:'hold'}],R:['Tom',{mood:'calm'}],p:'eraser'},
+  {t:'The teacher asks, "Who did this?" You did it.',zh:'老師問「這是誰做的？」是你做的。',a:'I did it.',o:["I don't know.",'Ben did it.'],L:['Sam',{mood:'oops'}],R:['Teacher',{pose:'hip',mood:'calm'}],p:'cup'},
+  {t:"You eat your friend's cookie.",zh:'你吃了朋友的餅乾。',a:"I ate it. I'm sorry.",o:['The dog ate it.','Not me!'],L:['Joy',{pose:'hold',mood:'oops'}],R:['Amy',{pose:'hip',mood:'sad'}],p:'cookie'},
+  {t:'You make a mistake.',zh:'你做錯了。',a:'I can fix it.',o:['You did it!','It is not me!'],L:['Leo',{pose:'hold',mood:'calm'}],R:['Teacher',{pose:'wave'}],p:'glue'},
+  {t:'You find a coin on the floor.',zh:'你在地上撿到一枚硬幣。',a:'Is this your coin?',o:['Yay! My coin!','Shh!'],L:['Ann',{pose:'hold'}],R:['Teacher',{mood:'calm'}],p:'coin'},
+  {t:'"Did you do your homework?" You did not.',zh:'「你寫作業了嗎？」你沒有寫。',a:"No, I didn't. I'm sorry.",o:['Yes, I did!','My dog ate it!'],L:['Kim',{mood:'sad'}],R:['Teacher',{pose:'hip'}],p:'paper'},
+  {t:'Your friend wants to copy your work.',zh:'朋友想抄你的作業。',a:'Do your own work.',o:['OK, copy it.','Ha ha!'],L:['Mia',{pose:'hip',mood:'calm'}],R:['Sam',{pose:'point',mood:'oops'}],p:'paper'}
+];
+makeQuiz('sayPanel',sayQs,(panel,q,done)=>{
+  const box=document.createElement('div');const opts=shuffle([q.a,...q.o]);
+  box.innerHTML=`${sceneHTML(q)}
+    <div class="qline"><div class="qtext">${q.t}</div><button class="speak">🔊</button></div><div class="qzh zh">${q.zh}</div>
+    <div class="choices">${opts.map(o=>`<button class="choice">${o}</button>`).join('')}</div><div class="feedback"></div>`;
+  panel.appendChild(box);
+  box.querySelector('.speak').onclick=()=>say(q.t);setTimeout(()=>say(q.t+' What do you say?'),250);
+  box.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{
+    const ok=b.textContent===q.a;
+    box.querySelectorAll('.choice').forEach(x=>{x.disabled=true;if(x.textContent===q.a)x.classList.add('right');});
+    if(!ok)b.classList.add('wrong');
+    box.querySelector('.feedback').textContent=ok?`Yes! "${q.a}"`:`Oops! Say: "${q.a}"`;
+    ok?(ding(),burstAt(b)):boop();setTimeout(()=>say(q.a),350);done(ok);
+  });
+},'Amy');
+
+/* =========================================================
+   GAME 3：BUILD IT
+   ========================================================= */
+const buildQs=[
+  {s:'I tell the truth.',zh:'我說實話。',k:'Amy',p:'truth'},
+  {s:"I did it. I'm sorry.",zh:'是我做的，對不起。',k:'Tom',p:'cup'},
+  {s:'Is this yours?',zh:'這是你的嗎？',k:'Zoe',p:'pencil'},
+  {s:'I can fix it.',zh:'我可以把它修好。',k:'Leo',p:'glue'},
+  {s:'I give it back.',zh:'我把它還回去。',k:'Joy',p:'coin'},
+  {s:'I do my own work.',zh:'自己的作業自己做。',k:'Ann',p:'paper'},
+  {s:'I am honest.',zh:'我是誠實的。',k:'Mia',p:'star'}
+];
+(function(){
+  const panel=document.getElementById('buildPanel');let order,idx,res,tries;const W=s=>s.split(' ');
+  function start(){order=shuffle(buildQs);idx=0;res=[];show();}
+  function prog(){return `<div class="progress">${order.map((_,i)=>`<i class="${i<res.length?(res[i]?'ok':'no'):(i===idx?'now':'')}">${i+1}</i>`).join('')}</div>`;}
+  function show(){
+    if(idx>=order.length)return finish();
+    const q=order[idx];tries=0;
+    let bank=shuffle(W(q.s).map((w,i)=>({w,i})));if(bank.map(b=>b.w).join(' ')===q.s&&bank.length>1)bank.reverse();
+    let ans=[];
+    panel.innerHTML=`${prog()}
+      <div class="btop"><div class="mini">${kid(q.k,{pose:'wave'})}</div>
+        <div><div class="qline" style="margin:0"><span style="width:56px;height:56px;display:inline-block">${ICON[q.p]}</span><div class="qtext">Listen and build!</div><button class="speak" id="bSpk">🔊</button></div>
+        <div class="qzh zh">${q.zh}</div></div></div>
+      <div class="answer-line" id="ansLine"></div><div class="bank" id="bank"></div>
+      <div class="build-tools"><button class="bigbtn p" id="bClear">↺ Clear</button><button class="bigbtn y" id="bHint">💡 Hint</button><button class="bigbtn" id="bCheck">✔ Check</button></div>
+      <div class="feedback" id="bFb"></div>`;
+    const ansEl=panel.querySelector('#ansLine'),bankEl=panel.querySelector('#bank'),fb=panel.querySelector('#bFb');
+    panel.querySelector('#bSpk').onclick=()=>say(q.s);setTimeout(()=>say(q.s),250);
+    function draw(){
+      bankEl.innerHTML='';ansEl.innerHTML='';
+      bank.forEach((t,i)=>{const b=document.createElement('button');b.className='tile';b.textContent=t.w;b.onclick=()=>{pop();ans.push(t);bank.splice(i,1);draw();};bankEl.appendChild(b);});
+      ans.forEach((t,i)=>{const b=document.createElement('button');b.className='tile';b.textContent=t.w;b.onclick=()=>{bank.push(t);ans.splice(i,1);draw();};ansEl.appendChild(b);});
+      if(!ans.length)ansEl.innerHTML='<span class="ph">Tap the words ⬇ 點下面的字</span>';
+      ansEl.classList.remove('good','bad');
+    }
+    draw();
+    panel.querySelector('#bClear').onclick=()=>{bank=bank.concat(ans);ans=[];draw();};
+    panel.querySelector('#bHint').onclick=()=>{const T=W(q.s);let k=0;while(k<ans.length&&ans[k].w===T[k])k++;bank=bank.concat(ans.splice(k));const j=bank.findIndex(b=>b.w===T[k]);if(j>-1){ans.push(bank[j]);bank.splice(j,1);}tries++;draw();say(T[k]||'');};
+    panel.querySelector('#bCheck').onclick=()=>{
+      if(bank.length){fb.textContent='Use all the words!';boop();return;}
+      const ok=ans.map(a=>a.w).join(' ')===q.s;
+      if(ok){ansEl.classList.add('good');ding();burstAt(ansEl);say(q.s);const first=tries===0;res.push(first);
+        fb.textContent=first?'Great! You did it!':'You did it!';
+        panel.querySelector('.build-tools').innerHTML=`<button class="bigbtn" id="bNext">${idx===order.length-1?'Finish ★':'Next ▶'}</button>`;
+        panel.querySelector('.progress').outerHTML=prog();panel.querySelector('#bNext').onclick=()=>{idx++;show();};}
+      else{tries++;ansEl.classList.add('bad');boop();fb.textContent='Try again!';setTimeout(()=>ansEl.classList.remove('bad'),500);}
+    };
+  }
+  function finish(){
+    const s=res.filter(Boolean).length,n=order.length,r=s/n;
+    panel.innerHTML=`<div class="done">${kid('Tom',{pose:'cheer',mood:'open'})}<h3>${r===1?'Super star!':'Great job!'}</h3>${starsHTML(r===1?3:r>=.6?2:1)}
+      <p style="font-size:20px;font-weight:700;margin:6px 0 18px">No-hint answers: ${s} / ${n}</p><button class="bigbtn y">🔁 Play again</button></div>`;
+    panel.querySelector('button').onclick=start;fanfare();burst(120);say('Great job!');
+  }
+  start();
+})();
+
+/* footer */
+document.getElementById('footKids').innerHTML=['Mia','Tom','Amy','Leo','Zoe','Ben','Joy'].map((k,i)=>kid(k,{pose:i%2?'cheer':'wave',mood:i%3?'happy':'open'})).join('');
+</script>
+</body>
+</html>
